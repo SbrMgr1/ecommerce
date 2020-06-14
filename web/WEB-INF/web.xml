@@ -13,4 +13,14 @@
         <url-pattern>/account/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>admin-authentication</filter-name>
+        <filter-class>AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>admin-authentication</filter-name>
+        <url-pattern>/administration</url-pattern>
+        <url-pattern>/administration/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

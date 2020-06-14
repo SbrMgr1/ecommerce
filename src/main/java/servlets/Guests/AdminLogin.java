@@ -19,12 +19,12 @@ public class AdminLogin extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/layouts/admin_layout.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/views/admin_login.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = userDao.findTheUser(this,(String) req.getParameter("email"),(String) req.getParameter("password"), UserRoles.USER);
+        User user = userDao.findTheUser(this,(String) req.getParameter("email"),(String) req.getParameter("password"), UserRoles.ADMIN);
         if(user != null){
             HttpSession session = req.getSession();
 
@@ -32,18 +32,18 @@ public class AdminLogin extends HttpServlet {
                 Cookie cookie = new Cookie("name",req.getParameter("email"));
                 cookie.setMaxAge(60*60*24*30);
                 resp.addCookie(cookie);
-                session.setAttribute("userInfo",user);
+                session.setAttribute("adminInfo",user);
             }else{
                 Cookie cookie = new Cookie("name",null);
                 cookie.setMaxAge(0);
                 resp.addCookie(cookie);
 
-                session.setAttribute("userInfo",user);
+                session.setAttribute("adminInfo",user);
             }
-            resp.sendRedirect("/account");
+            resp.sendRedirect("/administration");
         }else {
             req.setAttribute("errors","Invalid Credentials.");
-            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);
+            req.getRequestDispatcher("/WEB-INF/views/admin_login.jsp").forward(req,resp);
         }
     }
 }
