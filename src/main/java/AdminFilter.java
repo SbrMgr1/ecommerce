@@ -1,4 +1,5 @@
 import DataProviders.User;
+import DataProviders.UserRoles;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -21,7 +22,9 @@ public class AdminFilter implements Filter {
         HttpServletRequest httpReqest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResp = (HttpServletResponse) servletResponse;
         User user = (User) httpReqest.getSession().getAttribute("adminInfo");
-        if(user != null){
+        if(user == null){
+            httpResp.sendRedirect("/login");//redirecting to login page
+        }else if(user.getRole() == UserRoles.ADMIN){
             filterChain.doFilter(servletRequest, servletResponse);
         }else {
             System.out.println("session expired");
