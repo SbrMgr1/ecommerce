@@ -22,7 +22,7 @@ public class Home extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("title","Ecommerse");
+        req.setAttribute("title","Ecommerce");
 
         HashMap<Long,Product> products = (HashMap<Long, Product>) this.getServletContext().getAttribute("products");
         String param = req.getParameter("param");
