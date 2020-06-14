@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: samsherrana
   Date: 6/14/20
-  Time: 3:53 PM
+  Time: 5:23 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,13 +10,13 @@
 <!DOCTYPE html>
 <html>
 
-<%@ include file="admin_head.jsp"%>
+<%@ include file="./../layouts/admin_head.jsp"%>
 
 <body>
 
 <div id="wrapper">
 
-    <%@ include file="admin_menu.jsp"%>
+    <%@ include file="./../layouts/admin_menu.jsp"%>
 
     <div id="page-wrapper">
         <div class="row">
@@ -31,8 +31,7 @@
 
 </div>
 <!-- /#wrapper -->
-<%@ include file="admin_footer.jsp"%>
+<%@ include file="./../layouts/admin_footer.jsp"%>
 </body>
 
 </html>
-

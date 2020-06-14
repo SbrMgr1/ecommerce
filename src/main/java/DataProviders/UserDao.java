@@ -14,12 +14,11 @@ public class UserDao {
         }else{
             User user = (User) userlist.get(email.trim());
             if(user != null){
-                if (user.checkPassword(password.trim())){
+                if(user.getRole() == role && user.checkPassword(password.trim())){
                     return user;
                 }else{
                     return null;
                 }
-
             }else{
                 return null;
             }

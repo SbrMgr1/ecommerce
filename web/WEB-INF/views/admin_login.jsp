@@ -13,8 +13,8 @@
     <%@include file="./../layouts/header.jsp"%>
     <div class="container content p-15">
       <div class="mt-100 mb-100 row">
-        <form class="col-md-offset-4 col-md-4" action="<c:url value="/login"/>" method="post">
-          <p>Login with your email and password.</p>
+        <form class="col-md-offset-4 col-md-4" action="<c:url value="/admin-login"/>" method="post">
+          <p><h3>Admin Login</h3></p>
           <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" id="email" name="email" value="${cookie.name.value}">
