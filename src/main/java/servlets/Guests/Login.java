@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = userDao.findTheUser(this,(String) req.getParameter("email"),(String) req.getParameter("password"), UserRoles.USER);
+        User user = userDao.findTheUser(this,(String) req.getParameter("email"),(String) req.getParameter("password"));
 
         if(user != null){
             HttpSession session = req.getSession();
@@ -34,15 +34,28 @@ public class Login extends HttpServlet {
                 Cookie cookie = new Cookie("name",req.getParameter("email"));
                 cookie.setMaxAge(60*60*24*30);
                 resp.addCookie(cookie);
-                session.setAttribute("userInfo",user);
+                if (user.getRole() == UserRoles.ADMIN){
+                    session.setAttribute("adminInfo",user);
+                    resp.sendRedirect("/administration");
+                }else{
+                    session.setAttribute("userInfo",user);
+                    resp.sendRedirect("/account");
+                }
+
             }else{
                 Cookie cookie = new Cookie("name",null);
                 cookie.setMaxAge(0);
                 resp.addCookie(cookie);
 
-                session.setAttribute("userInfo",user);
+                if (user.getRole() == UserRoles.ADMIN){
+                    session.setAttribute("adminInfo",user);
+                    resp.sendRedirect("/administration");
+                }else{
+                    session.setAttribute("userInfo",user);
+                    resp.sendRedirect("/account");
+                }
             }
-            resp.sendRedirect("/account");
+
         }else {
             req.setAttribute("errors","Invalid Credentials.");
             req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);

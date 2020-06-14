@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }else {
             System.out.println("session expired");
-            httpResp.sendRedirect("/admin-login");//redirecting to login page
+            httpResp.sendRedirect("/login");//redirecting to login page
         }
     }
 

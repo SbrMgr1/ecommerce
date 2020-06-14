@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class UserDao {
 
 
-    public User findTheUser(HttpServlet httpServlet, String email, String password, UserRoles role){
+    public User findTheUser(HttpServlet httpServlet, String email, String password){
 
         HashMap<Long,User> userlist = (HashMap<Long, User>) httpServlet.getServletContext().getAttribute("users");
         if(userlist == null){
@@ -14,7 +14,7 @@ public class UserDao {
         }else{
             User user = (User) userlist.get(email.trim());
             if(user != null){
-                if(user.getRole() == role && user.checkPassword(password.trim())){
+                if(user.checkPassword(password.trim())){
                     return user;
                 }else{
                     return null;

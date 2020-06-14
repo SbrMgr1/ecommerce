@@ -7,11 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/administration/logout")
-public class Logout extends HttpServlet {
+@WebServlet("/administration/cms-managent")
+public class ContentManage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/login?msg=");
+        resp.getWriter().print("Pradip Bro");
     }
 }
