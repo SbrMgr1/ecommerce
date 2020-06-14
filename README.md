@@ -1,2 +1,2 @@
-# ecommerse
+# ecommerce
 Project for WAP
