@@ -60,9 +60,14 @@ $(function () {
         $('.product-form').find('[name="id"]').val(tr.attr("data-key"));
     })
     $(document).on('click','.delete-btn',function () {
-        var key = $(this).parents('tr').attr("data-key");
-        $.post('/administration/product_delete',{id:key},function () {
-
-        },'json');
+        var row = $(this).parents('tr');
+        var key = row.attr("data-key");
+        $.ajax({
+            type:"post",
+            url:'/administration/product_delete',
+            data: {id:key}
+        }).done(function (resp) {
+            row.remove();
+        });
     })
 })
