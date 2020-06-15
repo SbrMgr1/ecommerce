@@ -11,34 +11,39 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/add-to-cart")
 public class AddToCart extends HttpServlet {
 
-    HashMap<Long,Product> oldProduct;
+    HashMap<Long,Product> oldCartItems;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("id"));
         Integer qty = Integer.valueOf(req.getParameter("qty"));
 
         //original products
-        HashMap<Long, Product> products = (HashMap<Long, Product>) this.getServletContext().getAttribute("products");
+        List<Product> products = (List<Product>) this.getServletContext().getAttribute("products");
+        if (products == null){
 
-        //get single item
-        Product product = products.get(id);
-        oldProduct = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
-        if(oldProduct == null){
-            oldProduct = new HashMap<Long,Product>();
+            products = new ArrayList<Product>();
         }
-        if (product != null){
 
+        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+        if(oldCartItems == null){
+            oldCartItems = new HashMap<Long,Product>();
+        }
+        Optional<Product> result = products.stream().filter(p->p.getId() == id).findFirst();
+        if (result.isPresent()){
+            Product product  = result.get();
             product.setQty(qty);
-            oldProduct.put(id,product);
-            req.getSession().setAttribute("cart-item",oldProduct);
-            oldProduct = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
-            resp.getWriter().println(oldProduct.size());
+            oldCartItems.put(id,product);
+            req.getSession().setAttribute("cart-item", oldCartItems);
+            oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+            resp.getWriter().println(oldCartItems.size());
+
         }else{
-            resp.getWriter().println(oldProduct.size());
+            resp.getWriter().println(oldCartItems.size());
         }
     }
 }
