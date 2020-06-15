@@ -16,8 +16,8 @@ $(function()
     function returnedValue(data) {
         alert('here');
         console.log(data);
-    var tr=`<tr><td>${data.title}</td><td>${data.slug}</td><td><a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a></td></tr>`;
+    var tr=`<tr><td>${data.title}</td><td>${data.slug}</td><td><a class="btn btn-primary btn-xs" href="/edit?id=${data.id}"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger btn-xs" href="/delete?id=${data.id}"><i class="fa fa-trash-o"></i></a></td></tr>`;
     $('#cms-table>tbody').append(tr);
 
     }
