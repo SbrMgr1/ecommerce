@@ -14,41 +14,49 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Product Management</h1>
+                <h1 class="page-header">User Management</h1>
 
-                <button class="btn btn-success" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Collapsible</button>
+                <button class="btn btn-success" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Add / Edit</button>
                 <div id="demo" class="collapse">
                     <form>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="userEmail">Email address</label>
+                                    <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="userPassword">Password</label>
+                                    <input type="password" class="form-control" id="userPassword" placeholder="Password">
                                 </div>
                             </div>
                         </div>
                         <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
                     </form>
                 </div>
+                <c:set var="count" value="0" scope="page" />
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>User Id</th>
-                        <th>User Name</th>
+                        <th>Username</th>
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${}" var="user">
-                        <tr>
-                            <td>${user.id}</td>
+                    <c:forEach items="${users_for_crud}" var="user">
+                        <c:set var="count" value="${count + 1}" scope="page"/>
+                        <tr data-key="${user.id}">
+                            <td>${count}</td>
                             <td>${user.name}</td>
                             <td>${user.email}</td>
                             <td>
@@ -69,6 +77,7 @@
 </div>
 <!-- /#wrapper -->
 <%@ include file="../../layouts/admin_footer.jsp"%>
+<script src="<c:url value="/assets/js/user_crud.js"/>"></script>
 </body>
 
 </html>
