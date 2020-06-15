@@ -18,7 +18,51 @@
 
         <button class="btn btn-success" href="#demo" data-toggle="collapse">Collapsible</button>
         <div id="demo" class="collapse">
-          Product Form here
+          <form method="post">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product-name">Product Name</label>
+                  <input type="text" class="form-control" id="product-name" name="name" placeholder="Product Name">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product-category">Product Category</label>
+                  <input type="text" class="form-control" id="product-category" name="catId" placeholder="Product Category">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="product-image">Product Image</label>
+                <input type="file" id="product-image" name="producImg" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product-unitPrice">Product Price</label>
+                  <input type="text" class="form-control" id="product-unitPrice" name="unitPrice" placeholder="Product Name">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product-tax">Tax</label>
+                  <input type="text" class="form-control" id="product-tax" name="tax" placeholder="Tax">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product-desc">Product Image</label>
+                  <textarea class="form-control" name="desc" id="product-desc" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="submit" style="margin-bottom: 15px" class="btn btn-success">Submit</button>
+          </form>
         </div>
         <table class="table table-hover">
           <thead>
