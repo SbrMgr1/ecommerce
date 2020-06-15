@@ -30,7 +30,7 @@ public class MyContextListener implements ServletContextListener {
         userlist.put("user1@gmail.com",new User("User1","user1@gmail.com","user1"));
         userlist.put("user2@gmail.com",new User("User2","user2@gmail.com","user2"));
         servletContextEvent.getServletContext().setAttribute("users",userlist);
-        servletContextEvent.getServletContext().setAttribute("users_for_crud",userlist.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()));
+//        servletContextEvent.getServletContext().setAttribute("users_for_crud",userlist.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()));
     }
     private void initProducts(ServletContextEvent servletContextEvent){
 

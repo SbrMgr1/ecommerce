@@ -9,10 +9,11 @@ public class User {
     private String password;
     private UserRoles role = UserRoles.USER;
 
+    public User() {this.id = MyHelper.getRandomInt();}
+
     public User(String name,String email, String password){
         this.id = MyHelper.getRandomInt();
         this.email = email;
-        this.name = name;
         this.password = password;
         this.name = name;
     }
@@ -41,5 +42,25 @@ public class User {
 
     public UserRoles getRole() {
         return role;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(UserRoles role) {
+        this.role = role;
     }
 }
