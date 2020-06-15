@@ -16,23 +16,25 @@ import java.util.List;
 
 @WebServlet("/administration/cms-managent")
 public class ContentManage extends HttpServlet {
-    private CMSDao cmsDao;
+
     Gson mapper=new Gson();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        cmsDao=new CMSDao();
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<CMS> cmss=cmsDao.getAllCMS();
+        CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
+        List<CMS> cmss= cmsDao.getAllCMS();
         req.setAttribute("cms",cmss);
        req.getRequestDispatcher("/WEB-INF/views/admins/cms.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
         String cmsString=req.getParameter("cms");
         CMS cms=mapper.fromJson(cmsString, CMS.class);
         cms.setId(cmsDao.generateId());

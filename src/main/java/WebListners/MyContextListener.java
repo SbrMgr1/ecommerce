@@ -1,5 +1,6 @@
 package WebListners;
 
+import Dao.CMSDao;
 import models.Product;
 import models.User;
 import models.UserRoles;
@@ -21,6 +22,7 @@ public class MyContextListener implements ServletContextListener {
 
         initUsers(servletContextEvent);
         initProducts(servletContextEvent);
+        intCMS(servletContextEvent);
 
     }
     private void initUsers(ServletContextEvent servletContextEvent){
@@ -40,9 +42,9 @@ public class MyContextListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("products",products);
     }
 
-    private void intCMS()
-    {
-
+    private void intCMS(ServletContextEvent servletContextEvent) {
+        CMSDao cmsDao = new CMSDao();
+        servletContextEvent.getServletContext().setAttribute("cmsDao",cmsDao);
     }
 
     @Override

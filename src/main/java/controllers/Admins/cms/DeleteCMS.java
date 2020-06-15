@@ -14,11 +14,12 @@ import java.io.PrintWriter;
 import java.util.List;
 @WebServlet("/administration/delete")
 public class DeleteCMS extends HttpServlet {
-    private CMSDao cmsDao;
+
     Gson mapper=new Gson();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
         String  cmsId = req.getParameter("id");
         System.out.println(cmsId);
         cmsDao.deleteCMS(Integer.valueOf(cmsId));
