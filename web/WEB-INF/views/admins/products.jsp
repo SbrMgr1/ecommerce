@@ -18,7 +18,7 @@
 
         <button class="btn btn-success" href="#demo" data-toggle="collapse">Add/Edit</button>
         <div id="demo" class="collapse">
-          <form method="post">
+          <form method="post" class="product-form">
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -61,6 +61,7 @@
                 </div>
               </div>
             </div>
+            <input type="hidden" name="id">
             <button type="submit" style="margin-bottom: 15px" class="btn btn-success">Submit</button>
           </form>
         </div>
@@ -79,7 +80,7 @@
 
           <c:forEach items="${productList}" var="product" >
             <c:set var="count" value="${count + 1}" scope="page"/>
-                <tr>
+                <tr data-key="${product.id}">
                   <td>${count}</td>
                   <td>${product.name}</td>
                   <td>${product.unitPrice}</td>
@@ -103,6 +104,7 @@
 </div>
 <!-- /#wrapper -->
 <%@ include file="../../layouts/admin_footer.jsp"%>
+<script src="<c:url value="/assets/js/product.js"/>"></script>
 </body>
 
 </html>
