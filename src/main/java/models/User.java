@@ -14,10 +14,12 @@ public class User {
         this.email = email;
         this.name = name;
         this.password = password;
+        this.name = name;
     }
     public User(String name,String email, String password,UserRoles role){
         this.id = MyHelper.getRandomInt();
         this.email = email;
+        this.name = name;
         this.password = password;
         this.role = role;
     }
