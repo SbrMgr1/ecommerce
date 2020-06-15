@@ -1,8 +1,8 @@
-package servlets.Guests;
+package controllers.Guests;
 
-import DataProviders.User;
-import DataProviders.UserDao;
-import DataProviders.UserRoles;
+import models.User;
+import Dao.UserDao;
+import models.UserRoles;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

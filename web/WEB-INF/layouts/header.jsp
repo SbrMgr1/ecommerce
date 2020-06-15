@@ -1,4 +1,4 @@
-<%@ page import="DataProviders.Product" %>
+<%@ page import="models.Product" %>
 <%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: samsherrana

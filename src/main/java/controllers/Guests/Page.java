@@ -1,4 +1,4 @@
-package servlets.Guests;
+package controllers.Guests;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

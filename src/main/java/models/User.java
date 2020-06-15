@@ -1,4 +1,4 @@
-package DataProviders;
+package models;
 
 import helpers.MyHelper;
 
@@ -12,6 +12,7 @@ public class User {
     public User(String name,String email, String password){
         this.id = MyHelper.getRandomInt();
         this.email = email;
+        this.name = name;
         this.password = password;
         this.name = name;
     }
