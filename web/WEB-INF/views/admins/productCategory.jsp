@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
@@ -24,28 +25,36 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Product Management</h1>
 
+
                     <button class="btn btn-success" href="#demo" data-toggle="collapse">AddCategory</button>
+
                     <div id="demo" class="collapse">
 
                         <form>
                             <div class="form-group">
+
                                 <label for="catName">Product Category Name</label>
                                 <input type="text" class="form-control" id="catName"
+
                                        aria-describedby="prodHelp" placeholder="Enter product Category name..">
 
                             </div>
                             <div class="form-group">
+
                                 <label for="descrip">Description</label>
                                 <textarea name="descrip" class="form-control" id="descrip"
                                           placeholder="Description..." rows="5" cols="100"></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary" id="catSubmit">ADD</button>
+
                         </form>
 
 
                     </div>
+
                     <table class="table table-hover" id="prod-cat-table">
+
                         <thead>
                         <tr>
                             <th>#</th>
@@ -55,6 +64,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         <c:forEach items="${categoryList}" var="productCategory" >
                             <c:set var="count" value="${count + 1}" scope="page"/>
                             <tr>
@@ -67,6 +77,7 @@
                                 </td>
                             </tr>
                         </c:forEach>
+
                         </tbody>
                     </table>
                 </div>
@@ -76,10 +87,12 @@
         </div>
         <!-- /#page-wrapper -->
 
+
 </div>
 <!-- /#wrapper -->
 <%@ include file="../../layouts/admin_footer.jsp" %>
 <script src="<c:url value="/assets/js/ProductCategory.js"/>"></script>
+
 </body>
 
 </html>
