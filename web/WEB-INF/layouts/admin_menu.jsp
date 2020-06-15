@@ -248,9 +248,7 @@
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Product Management<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<c:url value="/administration/product-add"/>">Add New Product</a>
-                        </li>
+                        
                         <li>
                             <a href="<c:url value="/administration/product"/>">Product Lists</a>
                         </li>
@@ -263,9 +261,7 @@
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Product Cat Management<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<c:url value="/administration/product-cat-add"/>">Add New Category</a>
-                        </li>
+
                         <li>
                             <a href="<c:url value="/administration/product-cat"/>">Product Category Lists</a>
                         </li>
@@ -275,9 +271,7 @@
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-list"></i> User Management<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<c:url value="/administration/user-add"/>">Add New User</a>
-                        </li>
+
                         <li>
                             <a href="<c:url value="/administration/user"/>">User Lists</a>
                         </li>

@@ -31,6 +31,7 @@
             </label>
           </div>
           <c:if test="${errors != null}"><div class="form-group text-danger">${errors}</div></c:if>
+          <div class="form-group text-danger">${param.msg}</div>
           <div class="form-group">
             <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-log-in"></span> Signin</button>
           </div>
