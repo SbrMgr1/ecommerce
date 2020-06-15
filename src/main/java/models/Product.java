@@ -9,10 +9,14 @@ public class Product {
 
     private long id;
     private String name;
+    private long catId;
+
     private String producImg;
     private Double unitPrice;
     private float tax;
     private Integer qty;
+    private String desc;
+
     private List<Order> orders = new ArrayList<Order>();
 
     public Product(String name, Double unitPrice,String img,float tax) {
@@ -21,9 +25,6 @@ public class Product {
         this.unitPrice = unitPrice;
         this.producImg = img;
         this.tax = tax;
-    }
-    public void setOrders(int qty){
-        orders.add(new Order(2,qty));
     }
 
     public void setQty(Integer qty) {
@@ -36,6 +37,10 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public long getCatId() {
+        return catId;
     }
 
     public String getProducImg() {
@@ -52,6 +57,10 @@ public class Product {
 
     public Integer getQty() {
         return qty;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     public List<Order> getOrders() {
