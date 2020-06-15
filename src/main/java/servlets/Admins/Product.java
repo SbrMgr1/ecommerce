@@ -11,6 +11,6 @@ import java.io.IOException;
 public class Product extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("Samsher Task");
+        req.getRequestDispatcher("/WEB-INF/views/admins/products.jsp").forward(req,resp);
     }
 }
