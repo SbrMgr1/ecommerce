@@ -4,6 +4,7 @@ import Dao.CMSDao;
 import models.CMS;
 import com.google.gson.Gson;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +15,14 @@ import java.io.PrintWriter;
 
 @WebServlet("/administration/cms-managent")
 public class ContentManage extends HttpServlet {
-    CMSDao cmsDao;
+    private CMSDao cmsDao;
     Gson mapper=new Gson();
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        cmsDao=new CMSDao();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        req.getRequestDispatcher("/WEB-INF/views/admins/cms.jsp").forward(req,resp);
@@ -30,5 +37,5 @@ public class ContentManage extends HttpServlet {
         out.print(mapper.toJson(cms));
     }
 
- 
+
 }
