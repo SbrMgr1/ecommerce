@@ -7,7 +7,9 @@ import DataProviders.UserRoles;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @WebListener
 public class MyContextListener implements ServletContextListener {
@@ -29,12 +31,9 @@ public class MyContextListener implements ServletContextListener {
     }
     private void initProducts(ServletContextEvent servletContextEvent){
 
-        HashMap<Long, Product> products = new HashMap<Long, Product>();
-
-        Product product1 = new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2);
-        products.put((long) product1.getId(),product1);
-        Product product2 = new Product("Iphone 11 pro",800.5,"iphone11.jpg",2);
-        products.put((long)product2.getId(),product2);
+        List<Product> products = new ArrayList<Product>();
+        products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2));
+        products.add(new Product("Iphone 11 pro",800.5,"iphone11.jpg",2));
         servletContextEvent.getServletContext().setAttribute("products",products);
     }
 
