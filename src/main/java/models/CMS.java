@@ -1,17 +1,27 @@
 package models;
 
 public class CMS {
+    int id;
     private String title;
-    private String Slug;
+    private String slug;
     private String description;
-    public CMS(String title, String slug, String description) {
+    public CMS(int id,String title, String slug, String description) {
+        this.id=id;
         this.title = title;
-        Slug = slug;
+        this.slug = slug;
         this.description = description;
     }
     public CMS()
     {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -23,11 +33,11 @@ public class CMS {
     }
 
     public String getSlug() {
-        return Slug;
+        return slug;
     }
 
     public void setSlug(String slug) {
-        Slug = slug;
+        slug = slug;
     }
 
     public String getDescription() {
