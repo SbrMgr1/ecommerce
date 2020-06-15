@@ -19,12 +19,13 @@ public class Product {
 
     private List<Order> orders = new ArrayList<Order>();
 
-    public Product(String name, Double unitPrice,String img,float tax) {
+    public Product(String name, Double unitPrice,String img,float tax,long catId) {
         this.id = MyHelper.getRandomInt();
         this.name = name;
         this.unitPrice = unitPrice;
         this.producImg = img;
         this.tax = tax;
+        this.catId = catId;
     }
 
     public void setQty(Integer qty) {

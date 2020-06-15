@@ -16,7 +16,7 @@
       <div class="col-lg-12">
         <h1 class="page-header">Product Management</h1>
 
-        <button class="btn btn-success" href="#demo" data-toggle="collapse">Collapsible</button>
+        <button class="btn btn-success" href="#demo" data-toggle="collapse">Add/Edit</button>
         <div id="demo" class="collapse">
           <form method="post">
             <div class="row">
@@ -64,6 +64,7 @@
             <button type="submit" style="margin-bottom: 15px" class="btn btn-success">Submit</button>
           </form>
         </div>
+        <c:set var="count" value="0" scope="page" />
         <table class="table table-hover">
           <thead>
           <tr>
@@ -75,16 +76,21 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-            <td>john@example.com</td>
-            <td>
-              <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-            </td>
-          </tr>
+
+          <c:forEach items="${productList}" var="product" >
+            <c:set var="count" value="${count + 1}" scope="page"/>
+                <tr>
+                  <td>${count}</td>
+                  <td>${product.name}</td>
+                  <td>${product.unitPrice}</td>
+                  <td>${product.catId}</td>
+                  <td>
+                    <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                  </td>
+                </tr>
+          </c:forEach>
+
           </tbody>
         </table>
       </div>
