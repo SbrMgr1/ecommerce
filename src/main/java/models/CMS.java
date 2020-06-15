@@ -1,4 +1,4 @@
-package DataProviders;
+package models;
 
 public class CMS {
     private String title;

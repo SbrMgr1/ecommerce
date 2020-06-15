@@ -1,6 +1,6 @@
-package servlets.Admins;
+package controllers.Admins;
 
-import DataProviders.CMS;
+import models.CMS;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;

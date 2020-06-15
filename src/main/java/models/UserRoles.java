@@ -1,4 +1,4 @@
-package DataProviders;
+package models;
 
 public enum  UserRoles {
     ADMIN,

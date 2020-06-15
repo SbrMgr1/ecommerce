@@ -1,4 +1,6 @@
-package DataProviders;
+package Dao;
+
+import models.User;
 
 import javax.servlet.http.HttpServlet;
 import java.util.HashMap;

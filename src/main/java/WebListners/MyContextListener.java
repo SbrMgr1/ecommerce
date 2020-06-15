@@ -1,8 +1,8 @@
 package WebListners;
 
-import DataProviders.Product;
-import DataProviders.User;
-import DataProviders.UserRoles;
+import models.Product;
+import models.User;
+import models.UserRoles;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

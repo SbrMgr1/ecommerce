@@ -1,5 +1,5 @@
-import DataProviders.User;
-import DataProviders.UserRoles;
+import models.User;
+import models.UserRoles;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -1,4 +1,4 @@
-package servlets.Users;
+package controllers.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
