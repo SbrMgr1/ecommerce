@@ -47,6 +47,7 @@
 </div>
 <!-- /#wrapper -->
 <%@ include file="../../layouts/admin_footer.jsp"%>
+<script src="<c:url value="/assets/js/cms.js"/>"></script>
 </body>
 
 </html>
