@@ -11,6 +11,7 @@ import java.io.IOException;
 public class ContentManage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       req.getRequestDispatcher("views/cms.jsp").forward(req,resp);
+       req.getRequestDispatcher("/WEB-INF/views/admins/cms.jsp").forward(req,resp);
     }
+
 }
