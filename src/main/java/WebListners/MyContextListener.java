@@ -32,8 +32,8 @@ public class MyContextListener implements ServletContextListener {
     private void initProducts(ServletContextEvent servletContextEvent){
 
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2));
-        products.add(new Product("Iphone 11 pro",800.5,"iphone11.jpg",2));
+        products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2,1));
+        products.add(new Product("Iphone 11 pro",800.5,"iphone11.jpg",2,1));
         servletContextEvent.getServletContext().setAttribute("products",products);
     }
 
