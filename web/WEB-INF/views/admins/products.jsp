@@ -16,7 +16,7 @@
       <div class="col-lg-12">
         <h1 class="page-header">Product Management</h1>
 
-        <button class="btn btn-success" href="#demo" data-toggle="collapse">Add/Edit</button>
+        <button class="btn btn-success add-edit-btn" href="#demo" data-toggle="collapse">Add/Edit</button>
         <div id="demo" class="collapse">
           <form method="post" class="product-form">
             <div class="row">
