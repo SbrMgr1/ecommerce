@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 @WebServlet("")
 public class Home extends HttpServlet {
 
-
     List<Product> tmp;
 
     @Override

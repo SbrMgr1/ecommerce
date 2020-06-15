@@ -46,7 +46,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${}" var="user">
+                    <c:forEach items="${applicationScope.users_for_crud}" var="user">
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.name}</td>
