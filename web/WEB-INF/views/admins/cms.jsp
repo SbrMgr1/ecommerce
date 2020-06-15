@@ -21,7 +21,7 @@
                    <div class="form-group">
                        <label>Title</label><input type="text" name="title" id="title" class="form-control">
                        <label>Slug</label><input type="text"  name="title" id="slug" class="form-control">
-                       <label>Description</label><textarea name="description" id="description" rows="40" cols="100" class="form-control">Your Description here</textarea>
+                       <label>Description</label><textarea name="description" id="description" rows="40" cols="100" class="form-control" placeholder="Your Description here"></textarea>
                        <input type="submit" name="submit" value="submit" class="btn btn-success" id="cmsSubmit">
                    </div>
                 </div>
@@ -34,15 +34,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>john@example.com</td>
-                        <td>john@example.com</td>
-                        <td>
-                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
+                  
                     </tbody>
                 </table>
             </div>
