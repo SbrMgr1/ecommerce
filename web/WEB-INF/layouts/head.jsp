@@ -19,4 +19,5 @@
     <script src="<c:url value="/assets/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/assets/js/script.js"/>"></script>
+
 </head>
