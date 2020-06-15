@@ -23,13 +23,14 @@ public class Product {
 
     }
 
-    public Product(String name, Double unitPrice,String img,float tax,long catId) {
+    public Product(String name, Double unitPrice,String img,float tax,long catId,String desc) {
         this.id = MyHelper.getRandomInt();
         this.name = name;
         this.unitPrice = unitPrice;
         this.producImg = img;
         this.tax = tax;
         this.catId = catId;
+        this.desc = desc;
     }
 
     public long getId() {

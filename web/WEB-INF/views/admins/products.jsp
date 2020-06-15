@@ -23,40 +23,42 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="product-name">Product Name</label>
-                  <input type="text" class="form-control" id="product-name" name="name" placeholder="Product Name">
+                  <input type="text" class="form-control" id="product-name" name="name" placeholder="Product Name" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="product-category">Product Category</label>
-                  <input type="text" class="form-control" id="product-category" name="catId" placeholder="Product Category">
+                  <input type="text" class="form-control" id="product-category" name="catId" placeholder="Product Category" required>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <label for="product-image">Product Image</label>
-                <input type="file" id="product-image" name="producImg" >
+                <div class="form-group">
+                  <label for="product-image">Product Image</label>
+                  <input type="file" id="product-image" name="producImg" >
+                </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="product-unitPrice">Product Price</label>
-                  <input type="text" class="form-control" id="product-unitPrice" name="unitPrice" placeholder="Product Name">
+                  <input type="number" min="0.00" step="any" class="form-control" id="product-unitPrice" name="unitPrice" placeholder="0.00" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="product-tax">Tax</label>
-                  <input type="text" class="form-control" id="product-tax" name="tax" placeholder="Tax">
+                  <input type="number" min="0.00" step="any" class="form-control" id="product-tax" name="tax" placeholder="0.00" required>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="product-desc">Product Image</label>
+                  <label for="product-desc">Product Description</label>
                   <textarea class="form-control" name="desc" id="product-desc" rows="4"></textarea>
                 </div>
               </div>
@@ -66,13 +68,14 @@
           </form>
         </div>
         <c:set var="count" value="0" scope="page" />
-        <table class="table table-hover">
+        <table class="table table-hover product-table">
           <thead>
           <tr>
             <th>#</th>
             <th>Product Name</th>
-            <th>Unit Price</th>
             <th>Product Category</th>
+            <th class="text-right">Unit Price</th>
+            <th class="text-right">Tax</th>
             <th>Action</th>
           </tr>
           </thead>
@@ -80,16 +83,17 @@
 
           <c:forEach items="${productList}" var="product" >
             <c:set var="count" value="${count + 1}" scope="page"/>
-                <tr data-key="${product.id}">
-                  <td>${count}</td>
-                  <td>${product.name}</td>
-                  <td>${product.unitPrice}</td>
-                  <td>${product.catId}</td>
-                  <td>
-                    <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                  </td>
-                </tr>
+            <tr data-key="${product.id}" data-desc="${product.desc}">
+              <td>${count}</td>
+              <td>${product.name}</td>
+              <td>${product.catId}</td>
+              <td class="text-right">${product.unitPrice}</td>
+              <td class="text-right">${product.tax}</td>
+              <td>
+                <a class="btn btn-primary btn-xs edit-btn"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs delete-btn"><i class="fa fa-trash-o"></i></a>
+              </td>
+            </tr>
           </c:forEach>
 
           </tbody>
@@ -106,5 +110,4 @@
 <%@ include file="../../layouts/admin_footer.jsp"%>
 <script src="<c:url value="/assets/js/product.js"/>"></script>
 </body>
-
 </html>

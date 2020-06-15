@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import com.google.gson.Gson;
 import helpers.MyHelper;
 import models.Product;
 import org.apache.commons.fileupload.FileItem;
@@ -24,6 +25,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 @WebServlet("/administration/product")
 public class ProductController extends HttpServlet {
+    Gson mapper = new Gson();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductController> productList = (List<ProductController>)this.getServletContext().getAttribute("products");
@@ -81,9 +83,10 @@ public class ProductController extends HttpServlet {
                         tmp.setTax(f.getString().isEmpty()?0:Float.valueOf(f.getString()));
                     }else if(f.getFieldName().equals("desc")){
                         tmp.setDesc(f.getString());
+                    }else if(f.getFieldName().equals("desc")){
+                        tmp.setDesc(f.getString());
                     }else if(f.getFieldName().equals("id")){
-
-                        tmp.setId(f.getString().isEmpty()?0:Integer.valueOf(f.getString()));
+                        tmp.setId(f.getString().isEmpty()?0:Long.valueOf(f.getString()));
                     }
 
                 }else{//for file input
@@ -95,7 +98,7 @@ public class ProductController extends HttpServlet {
                     try {
                         f.write(file);
                         tmp.setProducImg(fileName);
-                        
+
 //                        BufferedImage img = ImageIO.read(file); // load image
 //                        BufferedImage scaledImg = Scalr.resize(img, Method.QUALITY, 1280, 960);
 
@@ -106,7 +109,7 @@ public class ProductController extends HttpServlet {
                 return true;
             }).collect(Collectors.toList());
 
-            saveToContext(tmp);
+            resp.getWriter().print(mapper.toJson(saveToContext(tmp)));
 
         } catch (FileUploadException e) {
             e.printStackTrace();
@@ -122,7 +125,7 @@ public class ProductController extends HttpServlet {
         if (products == null){
             products = new ArrayList<Product>();
         }
-        cnt = 0;
+        cnt = -1;
         Product localProduct = product;
         Optional<Product> optional = products.stream().filter((p)->{
             cnt++;
@@ -134,13 +137,12 @@ public class ProductController extends HttpServlet {
         }).findFirst();
         if(product.getId()>0){
             //edit operation
-
-            product = optional.get();
             products.get(cnt).setName(localProduct.getName());
             products.get(cnt).setUnitPrice(localProduct.getUnitPrice());
             products.get(cnt).setProducImg(localProduct.getProducImg());
             products.get(cnt).setTax(localProduct.getTax());
             products.get(cnt).setCatId(localProduct.getCatId());
+            products.get(cnt).setDesc(localProduct.getDesc());
 
             this.getServletContext().setAttribute("products",products);
             return products.get(cnt);
