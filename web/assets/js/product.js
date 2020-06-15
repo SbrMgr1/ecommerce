@@ -29,6 +29,7 @@ $(function () {
                 $(`tr[data-key="${product.id}"]`).find("td:nth-child(5)").text(product.tax);
 
             }else{
+
                 var html = `<tr data-key="${product.id}" data-desc="${product.desc}">
                   <td></td>
                   <td>${product.name}</td>
@@ -49,7 +50,7 @@ $(function () {
         });
         e.preventDefault();
     })
-    $('.edit-btn').on('click',function (e) {
+    $(document).on('click','.edit-btn',function (e) {
         var tr = $(this).parents('tr');
         $('.product-form').find('[name="name"]').val(tr.find("td:nth-child(2)").text());
         $('.product-form').find('[name="catId"]').val(tr.find("td:nth-child(3)").text());
@@ -57,5 +58,11 @@ $(function () {
         $('.product-form').find('[name="tax"]').val(tr.find("td:nth-child(5)").text());
         $('.product-form').find('[name="desc"]').val(tr.attr("data-desc"));
         $('.product-form').find('[name="id"]').val(tr.attr("data-key"));
+    })
+    $(document).on('click','.delete-btn',function () {
+        var key = $(this).parents('tr').attr("data-key");
+        $.post('/administration/product_delete',{id:key},function () {
+
+        },'json');
     })
 })
