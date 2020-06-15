@@ -1,4 +1,4 @@
-package controllers.Admins;
+package controllers.Admins.cms;
 
 import Dao.CMSDao;
 import models.CMS;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/administration/cms-managent")
 public class ContentManage extends HttpServlet {
@@ -25,6 +26,8 @@ public class ContentManage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<CMS> cmss=cmsDao.getAllCMS();
+        req.setAttribute("cms",cmss);
        req.getRequestDispatcher("/WEB-INF/views/admins/cms.jsp").forward(req,resp);
     }
 
@@ -37,6 +40,7 @@ public class ContentManage extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.print(mapper.toJson(cms));
     }
+
 
 
 }

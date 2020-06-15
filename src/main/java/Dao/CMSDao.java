@@ -16,9 +16,8 @@ public class CMSDao {
 
     public  void addCMS(CMS cms)
     {
-        System.out.println(cms.getId());
+        System.out.println(cms);
         cmss.put(generateId(),cms);
-
     }
     public Integer generateId() {
 

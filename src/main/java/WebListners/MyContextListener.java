@@ -40,6 +40,11 @@ public class MyContextListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("products",products);
     }
 
+    private void intCMS()
+    {
+
+    }
+
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
