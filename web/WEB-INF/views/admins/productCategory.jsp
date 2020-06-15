@@ -40,14 +40,14 @@
 
                         <form>
                             <div class="form-group">
-                                <label for="exampleInputProd">Product Name</label>
+                                <label for="exampleInputProd">Product Category Name</label>
                                 <input type="text" class="form-control" id="exampleInputProd"
                                        aria-describedby="prodHelp" placeholder="Enter product Category name..">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputDesc">Description</label>
-                                <input type="password" class="form-control" id="exampleInputDesc"
+                                <input type="text" class="form-control" id="exampleInputDesc"
                                        placeholder="Description...">
                             </div>
 
