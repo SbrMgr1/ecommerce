@@ -58,7 +58,12 @@ $(function () {
         $('.product-form').find('[name="tax"]').val(tr.find("td:nth-child(5)").text());
         $('.product-form').find('[name="desc"]').val(tr.attr("data-desc"));
         $('.product-form').find('[name="id"]').val(tr.attr("data-key"));
-    })
+
+
+        if(!$('.add-edit-btn').attr('aria-expanded')){
+            $('.add-edit-btn').click();
+        }
+    });
     $(document).on('click','.delete-btn',function () {
         var row = $(this).parents('tr');
         var key = row.attr("data-key");
@@ -68,6 +73,7 @@ $(function () {
             data: {id:key}
         }).done(function (resp) {
             row.remove();
+            manageSerialNumber();
         });
     })
 })
