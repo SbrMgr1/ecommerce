@@ -19,52 +19,95 @@ public class Product {
 
     private List<Order> orders = new ArrayList<Order>();
 
-    public Product(String name, Double unitPrice,String img,float tax,long catId) {
+    public Product(){
+
+    }
+
+    public Product(String name, Double unitPrice,String img,float tax,long catId,String desc) {
         this.id = MyHelper.getRandomInt();
         this.name = name;
         this.unitPrice = unitPrice;
         this.producImg = img;
         this.tax = tax;
         this.catId = catId;
-    }
-
-    public void setQty(Integer qty) {
-        this.qty = qty;
+        this.desc = desc;
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getCatId() {
         return catId;
     }
 
+    public void setCatId(long catId) {
+        this.catId = catId;
+    }
+
     public String getProducImg() {
         return producImg;
+    }
+
+    public void setProducImg(String producImg) {
+        this.producImg = producImg;
     }
 
     public Double getUnitPrice() {
         return unitPrice;
     }
 
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
     public float getTax() {
         return tax;
+    }
+
+    public void setTax(float tax) {
+        this.tax = tax;
     }
 
     public Integer getQty() {
         return qty;
     }
 
+    public void setQty(Integer qty) {
+        this.qty = qty;
+    }
+
     public String getDesc() {
         return desc;
     }
 
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Product p =  (Product)obj;
+        return p.getId() == this.getId();
     }
 }
