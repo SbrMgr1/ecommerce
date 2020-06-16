@@ -43,9 +43,12 @@ public class ProductCategoryController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String productCat = req.getParameter("productCategory");
+        String productCat = req.getParameter("cat");
         System.out.println(productCat);
         ProductCategory productCategory = mapper.fromJson(productCat, ProductCategory.class);
+        ProductCategoryDao productCategoryDao = (ProductCategoryDao)this.getServletContext().getAttribute("categoryDao");
+        productCategoryDao.addEditProductCategory(productCategory);
+
         PrintWriter out = resp.getWriter();
         out.print(mapper.toJson(productCategory));
 

@@ -15,21 +15,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet("/administration/deleteCat")
+@WebServlet("/administration/delete-cat")
 public class ProdCatDeleteController extends HttpServlet {
-    private ProductCategoryDao dao;
-    Gson mapper=new Gson();
+
+    Gson mapper = new Gson();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String catId= req.getParameter("id");
-        Long id=Long.parseLong(catId);
-        dao.deleteProductCategory(Long.valueOf(catId));
+        String catId = req.getParameter("id");
+
+        ProductCategoryDao productCategoryDao = (ProductCategoryDao)this.getServletContext().getAttribute("categoryDao");
+        productCategoryDao.deleteProductCategory(Long.valueOf(catId));
+
         String success="Deleted Successfully!!";
-        HashMap<Long, ProductCategory> productCategoryList=dao.getAllCategory();
-        PrintWriter out=resp.getWriter();
-        out.print(mapper.toJson(success));
-
-
+        resp.getWriter().print(mapper.toJson(success));
     }
 }
