@@ -22,7 +22,7 @@ public class DeleteCMS extends HttpServlet {
         CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
         String  cmsId = req.getParameter("id");
         System.out.println(cmsId);
-        cmsDao.deleteCMS(Integer.valueOf(cmsId));
+        cmsDao.deleteCMS(Long.valueOf(cmsId));
         String data="Successfully Deleted";
         List<CMS> cmss=cmsDao.getAllCMS();
         System.out.println(cmss);
