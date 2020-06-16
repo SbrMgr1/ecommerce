@@ -58,74 +58,79 @@
             </div>
         </div>
     <div class="container-fluid theme-header-top-second">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand active" href="<c:url value="/" />"><span class="glyphicon glyphicon-home"></span> Home</a>
-        </div>
+        <div class="container">
+            <div class="row">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="<c:url value='/page/about-us'/>"><span class="glyphicon glyphicon-th-large"></span> About Us</a></li>
-                <c:choose>
-                    <c:when test="${sessionScope.userInfo != null}">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My account <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand active" href="<c:url value="/" />"><span class="glyphicon glyphicon-home"></span> Home</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="<c:url value='/page/about-us'/>"><span class="glyphicon glyphicon-th-large"></span> About Us</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.userInfo != null}">
                                 <li>
-                                    <a href="<c:url value="/account/profile"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My account <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="<c:url value="/account/profile"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/account/change-password"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                        </li>
+                                    </ul>
                                 </li>
+                            </c:when>
+                            <c:otherwise>
                                 <li>
-                                    <a href="<c:url value="/account/change-password"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                    <a
+                                            href="<c:url value="/login"/>"><span class="glyphicon glyphicon-log-in"></span> Sign in
+                                    </a>
                                 </li>
-                                <li>
-                                    <a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li>
-                            <a
-                                    href="<c:url value="/login"/>"><span class="glyphicon glyphicon-log-in"></span> Sign in
-                            </a>
-                        </li>
-                        <li><a href="<c:url value='/signup'/>"><span class="glyphicon glyphicon-user"></span> Join Us</a></li>
-                    </c:otherwise>
-                </c:choose>
-<%--                <li class="dropdown">--%>
-<%--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--%>
-<%--                    <ul class="dropdown-menu">--%>
-<%--                        <li><a href="#">Action</a></li>--%>
-<%--                        <li><a href="#">Another action</a></li>--%>
-<%--                        <li><a href="#">Something else here</a></li>--%>
-<%--                        <li role="separator" class="divider"></li>--%>
-<%--                        <li><a href="#">Separated link</a></li>--%>
-<%--                        <li role="separator" class="divider"></li>--%>
-<%--                        <li><a href="#">One more separated link</a></li>--%>
-<%--                    </ul>--%>
-<%--                </li>--%>
-            </ul>
-<%--            <ul class="nav navbar-nav navbar-right">--%>
-<%--                <li><a href="#">Link</a></li>--%>
-<%--                <li class="dropdown">--%>
-<%--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--%>
-<%--                    <ul class="dropdown-menu">--%>
-<%--                        <li><a href="#">Action</a></li>--%>
-<%--                        <li><a href="#">Another action</a></li>--%>
-<%--                        <li><a href="#">Something else here</a></li>--%>
-<%--                        <li role="separator" class="divider"></li>--%>
-<%--                        <li><a href="#">Separated link</a></li>--%>
-<%--                    </ul>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-        </div><!-- /.navbar-collapse -->
+                                <li><a href="<c:url value='/signup'/>"><span class="glyphicon glyphicon-user"></span> Join Us</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                        <%--                <li class="dropdown">--%>
+                        <%--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--%>
+                        <%--                    <ul class="dropdown-menu">--%>
+                        <%--                        <li><a href="#">Action</a></li>--%>
+                        <%--                        <li><a href="#">Another action</a></li>--%>
+                        <%--                        <li><a href="#">Something else here</a></li>--%>
+                        <%--                        <li role="separator" class="divider"></li>--%>
+                        <%--                        <li><a href="#">Separated link</a></li>--%>
+                        <%--                        <li role="separator" class="divider"></li>--%>
+                        <%--                        <li><a href="#">One more separated link</a></li>--%>
+                        <%--                    </ul>--%>
+                        <%--                </li>--%>
+                    </ul>
+                    <%--            <ul class="nav navbar-nav navbar-right">--%>
+                    <%--                <li><a href="#">Link</a></li>--%>
+                    <%--                <li class="dropdown">--%>
+                    <%--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--%>
+                    <%--                    <ul class="dropdown-menu">--%>
+                    <%--                        <li><a href="#">Action</a></li>--%>
+                    <%--                        <li><a href="#">Another action</a></li>--%>
+                    <%--                        <li><a href="#">Something else here</a></li>--%>
+                    <%--                        <li role="separator" class="divider"></li>--%>
+                    <%--                        <li><a href="#">Separated link</a></li>--%>
+                    <%--                    </ul>--%>
+                    <%--                </li>--%>
+                    <%--            </ul>--%>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div>
     </div>
     </div><!-- /.container-fluid -->
 </nav>
