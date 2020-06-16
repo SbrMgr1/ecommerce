@@ -3,9 +3,7 @@ package controllers.Admins;
 
 import Dao.ProductCategoryDao;
 import com.google.gson.Gson;
-import models.CMS;
-
-import javax.servlet.RequestDispatcher;
+import models.ProductCategory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +16,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/administration/product-cat")
-public class ProductCategory extends HttpServlet {
+public class ProductCategoryController extends HttpServlet {
     private ProductCategoryDao dao;
     Gson mapper = new Gson();
 
