@@ -1,7 +1,9 @@
 package WebListners;
 
 import Dao.CMSDao;
+import Dao.ProductCategoryDao;
 import models.Product;
+import models.ProductCategory;
 import models.User;
 import models.UserRoles;
 
@@ -45,6 +47,11 @@ public class MyContextListener implements ServletContextListener {
     private void intCMS(ServletContextEvent servletContextEvent) {
         CMSDao cmsDao = new CMSDao();
         servletContextEvent.getServletContext().setAttribute("cmsDao",cmsDao);
+    }
+    private void initCategory(ServletContextEvent servletContextEvent){
+        ProductCategoryDao productCategoryDao = new ProductCategoryDao();
+
+        servletContextEvent.getServletContext().setAttribute("productCategory",productCategoryDao);
     }
 
     @Override

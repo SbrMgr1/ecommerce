@@ -18,6 +18,7 @@ public class ProductCategory {
         this.desc = desc;
     }
     public ProductCategory(String name, String desc) {
+        this.id = MyHelper.getRandomInt();
         this.name = name;
         this.desc = desc;
     }
@@ -26,8 +27,8 @@ public class ProductCategory {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId() {
+        this.id = MyHelper.getRandomInt();
     }
 
     public String getName() {
