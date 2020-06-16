@@ -47,6 +47,7 @@ $(function () {
             manageSerialNumber();
 
             $('.product-form')[0].reset();
+            $('[name="id"]').val('');
         });
         e.preventDefault();
     })

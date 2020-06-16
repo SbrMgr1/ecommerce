@@ -25,6 +25,7 @@ public class MyContextListener implements ServletContextListener {
         initUsers(servletContextEvent);
         initProducts(servletContextEvent);
         intCMS(servletContextEvent);
+        initCategory(servletContextEvent);
 
     }
     private void initUsers(ServletContextEvent servletContextEvent){
@@ -49,9 +50,14 @@ public class MyContextListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("cmsDao",cmsDao);
     }
     private void initCategory(ServletContextEvent servletContextEvent){
-        ProductCategoryDao productCategoryDao = new ProductCategoryDao();
 
-        servletContextEvent.getServletContext().setAttribute("productCategory",productCategoryDao);
+        ProductCategoryDao productCategoryDao = new ProductCategoryDao();
+        ProductCategory productCategory = new ProductCategory("Electronics","Laptops,Mobiles,Tvs");
+        productCategoryDao.addEditProductCategory(productCategory);
+        System.out.println("===============");
+        System.out.println(productCategoryDao);
+        System.out.println("===============");
+        servletContextEvent.getServletContext().setAttribute("categoryDao",productCategoryDao);
     }
 
     @Override
