@@ -10,7 +10,7 @@ $(function () {
 
 
     $("#catSubmit").submit(function (e) {
-        alert("hello");
+        // alert("hello");
         var catName = $('#catName').val();
         var descrip = $('#descrip').val();
         var productCategory = {
@@ -23,7 +23,7 @@ $(function () {
     })
 
     function addCatgory(data) {
-        alert('here');
+        // alert('here');
         console.log(data);
         var tr = `<tr><td>${data.catName}</td>
                  <td>${data.descrip}</td>
@@ -32,6 +32,7 @@ $(function () {
               <button class="btn btn-danger btn-xs delete-btn" value="$(data.id)">
               <i class="fa fa-trash-o"></i></button></td></tr>`;
         $('#prod-cat-table>tbody').append(tr);
+        manageSerialNumber();
 
     }
 
@@ -67,6 +68,7 @@ $(function () {
 
         $('#catName').val(catName);
         $('#descrip').val(desc);
+
 
 
         e.preventDefault();
