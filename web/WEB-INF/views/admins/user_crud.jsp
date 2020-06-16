@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">User Management</h1>
 
-                <button class="btn btn-success" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Add / Edit</button>
+                <button class="btn btn-success add-edit-btn" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Add / Edit</button>
                 <div id="demo" class="collapse">
                     <form id="my-form">
                         <div class="row">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value=" ">
+                        <input type="hidden" name="id" value="">
                         <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
                     </form>
                 </div>
