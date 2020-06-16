@@ -20,7 +20,7 @@ public class Product {
     private List<Order> orders = new ArrayList<Order>();
 
     public Product(){
-
+        this.id = MyHelper.getRandomInt();
     }
 
     public Product(String name, Double unitPrice,String img,float tax,long catId,String desc) {

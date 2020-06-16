@@ -29,7 +29,12 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="product-category">Product Category</label>
-                  <input type="text" class="form-control" id="product-category" name="catId" placeholder="Product Category" required>
+                  <select type="text" class="form-control" id="product-category" name="catId" required>
+                    <option value="">Choose Product Category</option>
+                    <c:forEach items="${catlist}" var="category">
+                        <option value="${category.value.id}">${category.value.name}</option>
+                    </c:forEach>
+                  </select>
                 </div>
               </div>
             </div>
@@ -88,7 +93,7 @@
               <td>${count}</td>
               <td>${product.name}</td>
               <td><img class="img-responsive" src="<c:url value="/assets/images/${product.producImg}"/>"/></td>
-              <td>${product.catId}</td>
+              <td data-cat="${product.catId}">${catlist[product.catId].name}</td>
               <td class="text-right">${product.unitPrice}</td>
               <td class="text-right">${product.tax}</td>
               <td>
