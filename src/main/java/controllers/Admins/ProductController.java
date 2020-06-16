@@ -34,6 +34,7 @@ public class ProductController extends HttpServlet {
         req.setAttribute("productList",productList);
         req.getRequestDispatcher("/WEB-INF/views/admins/products.jsp").forward(req,resp);
     }
+    private Product tmp;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,29 +43,12 @@ public class ProductController extends HttpServlet {
 
         try {
             List<FileItem> fileItems = servletFileUpload.parseRequest(req);
-            Product tmp = new Product();
+            tmp = new Product();
 
             fileItems.stream().filter((f)->{
-                if(f.isFormField()) {
-
-                    if(f.getFieldName().equals("name")){
-                        tmp.setName(f.getString());
-                    }else if(f.getFieldName().equals("catId")){
-                        tmp.setCatId(Long.valueOf(f.getString()));
-                    }else if(f.getFieldName().equals("unitPrice")){
-                        tmp.setUnitPrice(f.getString().isEmpty()?0.0:Double.valueOf(f.getString()));
-                    }else if(f.getFieldName().equals("tax")){
-                        tmp.setTax(f.getString().isEmpty()?0:Float.valueOf(f.getString()));
-                    }else if(f.getFieldName().equals("desc")){
-                        tmp.setDesc(f.getString());
-                    }else if(f.getFieldName().equals("desc")){
-                        tmp.setDesc(f.getString());
-                    }else if(f.getFieldName().equals("id")){
-                        tmp.setId(f.getString().isEmpty()?0:Long.valueOf(f.getString()));
-                    }
-
-                }else{//for file input
-
+                if(f.getFieldName().equals("text_inputs")){
+                    tmp = mapper.fromJson(f.getString(),Product.class);
+                }else if(f.getFieldName().equals("file_input")){
                     String fileName = String.valueOf(MyHelper.getRandomInt())+"-"+f.getName();
                     String imagePath = "/assets/images";
                     String absoluteDiskPath = this.getServletContext().getRealPath(imagePath);
@@ -72,16 +56,14 @@ public class ProductController extends HttpServlet {
                     try {
                         f.write(file);
                         tmp.setProducImg(fileName);
-
-//                        BufferedImage img = ImageIO.read(file); // load image
-//                        BufferedImage scaledImg = Scalr.resize(img, Method.QUALITY, 1280, 960);
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
+
                 return true;
             }).collect(Collectors.toList());
+
             ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
             resp.getWriter().print(mapper.toJson(productDao.saveProduct(tmp)));
 

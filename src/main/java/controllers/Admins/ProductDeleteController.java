@@ -1,5 +1,6 @@
 package controllers.Admins;
 
+import Dao.ProductDao;
 import com.google.gson.Gson;
 import helpers.MyHelper;
 import models.Product;
@@ -26,16 +27,8 @@ public class ProductDeleteController extends HttpServlet {
     private int index = -1;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        List<Product> products = (List<Product>) this.getServletContext().getAttribute("products");
-        if (products == null){
-            products = new ArrayList<Product>();
-        }
-
-        Product product = new Product();
-        product.setId(Long.valueOf(req.getParameter("id")));
-
-        products.remove(product);
+        ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
+        productDao.removeProduct(Long.valueOf(req.getParameter("id")));
 
 
     }

@@ -50,8 +50,13 @@ public class ProductDao {
             return product;
         }
     }
-    public int removeProduct(long id){
-        return products.size();
+    public boolean removeProduct(long id){
+
+        Product product = new Product();
+        product.setId(id);
+
+        return products.remove(product);
+
     }
 
     public List<Product> getProducts() {

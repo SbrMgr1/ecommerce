@@ -73,6 +73,7 @@
           <tr>
             <th>#</th>
             <th>Product Name</th>
+            <th style="width: 10%">Product Image</th>
             <th>Product Category</th>
             <th class="text-right">Unit Price</th>
             <th class="text-right">Tax</th>
@@ -86,6 +87,7 @@
             <tr data-key="${product.id}" data-desc="${product.desc}">
               <td>${count}</td>
               <td>${product.name}</td>
+              <td><img class="img-responsive" src="<c:url value="/assets/images/${product.producImg}"/>"/></td>
               <td>${product.catId}</td>
               <td class="text-right">${product.unitPrice}</td>
               <td class="text-right">${product.tax}</td>

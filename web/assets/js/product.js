@@ -9,7 +9,22 @@ $(function () {
     }
     $('.product-form').submit(function (e) {
 
-        var formData = new FormData($(this)[0]);
+
+        var formData = new FormData();
+
+        var text_inputs = {
+            name: $(this).find('[name="name"]').val(),
+            catId: $(this).find('[name="catId"]').val(),
+            unitPrice: $(this).find('[name="unitPrice"]').val(),
+            tax: $(this).find('[name="tax"]').val(),
+            desc: $(this).find('[name="desc"]').val()
+        };
+        if ($(this).find('[name="id"]').val()){
+            text_inputs.id = $(this).find('[name="id"]').val()
+        }
+        var file_input = $('[name="producImg"]')[0].files[0];
+        formData.append("text_inputs",JSON.stringify(text_inputs));
+        formData.append("file_input",file_input);
 
         $.ajax({
             url:"/administration/product",
@@ -33,6 +48,7 @@ $(function () {
                 var html = `<tr data-key="${product.id}" data-desc="${product.desc}">
                   <td></td>
                   <td>${product.name}</td>
+                  <td><img class="img-responsive" src="</assets/images/${product.producImg}"/></td>
                   <td>${product.catId}</td>
                   <td class="text-right">${product.unitPrice}</td>
                   <td class="text-right">${product.tax}</td>
