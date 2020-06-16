@@ -12,8 +12,7 @@ public class ProductCategory {
         this.id = MyHelper.getRandomInt();
     }
 
-    public ProductCategory(int id,String name, String desc) {
-
+    public ProductCategory(Long id,String name, String desc) {
         this.id = id;
         this.name = name;
         this.desc = desc;

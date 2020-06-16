@@ -35,16 +35,19 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="<c:url value="/"/>">Home</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
+                        <a href="<c:url value="/page/about-us"/>">About Us</a>
                     </li>
                     <li>
-                        <a href="#!">Link 3</a>
+                        <a href="<c:url value="/page/terms-and-conditions"/>">Terms and Conditions</a>
                     </li>
                     <li>
-                        <a href="#!">Link 4</a>
+                        <a href="<c:url value="/page/faq"/>">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/page/privacy-policy"/>">Privacy Policy</a>
                     </li>
                 </ul>
 

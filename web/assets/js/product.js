@@ -7,9 +7,31 @@ $(function () {
             $(this).find("td:nth-child(1)").text(sn++);
         })
     }
+    var catList = {};
+    $('#product-category').each(function (e) {
+        if($(this).val()){
+            catList[$(this).val()] = $(this).text();
+        }
+    })
     $('.product-form').submit(function (e) {
 
-        var formData = new FormData($(this)[0]);
+
+
+        var formData = new FormData();
+
+        var text_inputs = {
+            name: $(this).find('[name="name"]').val(),
+            catId: $(this).find('[name="catId"]').val(),
+            unitPrice: $(this).find('[name="unitPrice"]').val(),
+            tax: $(this).find('[name="tax"]').val(),
+            desc: $(this).find('[name="desc"]').val()
+        };
+        if ($(this).find('[name="id"]').val()){
+            text_inputs.id = $(this).find('[name="id"]').val()
+        }
+        var file_input = $('[name="producImg"]')[0].files[0];
+        formData.append("text_inputs",JSON.stringify(text_inputs));
+        formData.append("file_input",file_input);
 
         $.ajax({
             url:"/administration/product",
@@ -19,12 +41,17 @@ $(function () {
             contentType: false,
             processData: false,
             data:formData
-        }).done(function (product) {
+        }).done(function (resp) {
+            var product = resp.data;
 
+            var catName = '';
+            if(catList[product.catId]){
+                catName = catList[product.catId];
+            }
             if($('.product-form').find('[name="id"]').val()){
 
                 $(`tr[data-key="${product.id}"]`).find("td:nth-child(2)").text(product.name);
-                $(`tr[data-key="${product.id}"]`).find("td:nth-child(3)").text(product.catId);
+                $(`tr[data-key="${product.id}"]`).find("td:nth-child(3)").attr("data-cat",product.catId).text(catName);
                 $(`tr[data-key="${product.id}"]`).find("td:nth-child(4)").text(product.unitPrice);
                 $(`tr[data-key="${product.id}"]`).find("td:nth-child(5)").text(product.tax);
 
@@ -33,7 +60,8 @@ $(function () {
                 var html = `<tr data-key="${product.id}" data-desc="${product.desc}">
                   <td></td>
                   <td>${product.name}</td>
-                  <td>${product.catId}</td>
+                  <td><img class="img-responsive" src="/assets/images/${product.producImg}"/></td>
+                  <td data-cat="${product.catId}">${catName}</td>
                   <td class="text-right">${product.unitPrice}</td>
                   <td class="text-right">${product.tax}</td>
                   <td>
@@ -55,12 +83,11 @@ $(function () {
 
         var tr = $(this).parents('tr');
         $('.product-form').find('[name="name"]').val(tr.find("td:nth-child(2)").text());
-        $('.product-form').find('[name="catId"]').val(tr.find("td:nth-child(3)").text());
-        $('.product-form').find('[name="unitPrice"]').val(tr.find("td:nth-child(4)").text());
-        $('.product-form').find('[name="tax"]').val(tr.find("td:nth-child(5)").text());
+        $('.product-form').find('[name="catId"]').val(tr.find("td:nth-child(4)").attr("data-cat"));
+        $('.product-form').find('[name="unitPrice"]').val(tr.find("td:nth-child(5)").text());
+        $('.product-form').find('[name="tax"]').val(tr.find("td:nth-child(6)").text());
         $('.product-form').find('[name="desc"]').val(tr.attr("data-desc"));
         $('.product-form').find('[name="id"]').val(tr.attr("data-key"));
-
         if(!$('.add-edit-btn').attr('aria-expanded')){
             $('.add-edit-btn').click();
         }

@@ -3,7 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
+    <context-param>
+        <param-name>sitename</param-name>
+        <param-value>Cosmic Trade</param-value>
+    </context-param>
     <filter>
         <filter-name>authentication</filter-name>
         <filter-class>MyFilter</filter-class>

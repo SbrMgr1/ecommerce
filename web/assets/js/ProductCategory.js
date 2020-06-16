@@ -53,7 +53,7 @@ $(function () {
         $.ajax({
             url:"/administration/product-cat",
             type:'post',
-            dataType:'json',
+            // dataType:'json',
             data:{
                 cat:JSON.stringify(myJson)
             }
@@ -86,10 +86,8 @@ $(function () {
 
     $(document).on('click', '.delete-btn', function (e) {
         if(!confirm('Are you sure you want to delete this category?')){
-
             return false;
         }
-
         var tr = $(this).parents('tr');
         var cat_id = tr.attr("data-key");
 
@@ -109,7 +107,7 @@ $(function () {
         $('#catSubmit').find('[name="desc"]').val(tr.find("td:nth-child(3)").text());
         $('#catSubmit').find('[name="id"]').val(tr.attr("data-key"));
 
-        if (!$('.add-edit-btn').attr('aria-expanded')) {
+        if ($('.add-edit-btn').attr('aria-expanded')) {
             $('.add-edit-btn').click();
         }
         e.preventDefault();

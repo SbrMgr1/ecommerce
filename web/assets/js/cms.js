@@ -1,5 +1,12 @@
 $(function()
 {
+    // var manageSerialNumber = function () {
+    //     var tbody = $('tbody');
+    //     var sn = 1;
+    //     tbody.find('tr').each(function (e) {
+    //         $(this).find("td:nth-child(1)").text(sn++);
+    //     })
+    // }
     $('#cmsSubmit').click(function (e) {
         var id=$('#c_id').val();
 
@@ -27,6 +34,7 @@ $(function()
             var tr = `<tr id="${data.id}"><td>${data.title}</td><td>${data.slug}</td><td>${data.description}</td><td><button class="btn btn-primary btn-xs edit-btn" value="${data.id}" ><i class="fa fa-edit"></i></button>
               <button class="btn btn-danger btn-xs delete-btn" value="${data.id}"><i class="fa fa-trash-o"></i></button></td></tr>`;
             $('#cms-table>tbody').append(tr);
+
         }
         else
         {
@@ -35,6 +43,7 @@ $(function()
             $(`tr[id="${data.id}"]`).find("td:nth-child(3)").text(data.description);
 
         }
+        // manageSerialNumber();
 
     }
 

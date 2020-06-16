@@ -45,7 +45,7 @@
                                       placeholder="Description..." rows="5" cols="100"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">ADD</button>
+                        <button type="submit" class="btn btn-primary">SAVE</button>
 
                     </form>
 
