@@ -43,8 +43,9 @@ public class MyContextListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("productDao",productDao);
     }
 
-    private void intCMS(ServletContextEvent servletContextEvent) {
+        private void intCMS(ServletContextEvent servletContextEvent) {
         CMSDao cmsDao = new CMSDao();
+
         servletContextEvent.getServletContext().setAttribute("cmsDao",cmsDao);
     }
     private void initCategory(ServletContextEvent servletContextEvent){
