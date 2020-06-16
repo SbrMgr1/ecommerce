@@ -12,10 +12,7 @@
 <body>
 <%@include file="./../layouts/header.jsp"%>
 <div class="container content p-15">
-    <h3><c:out value="${cms.title}"></c:out></h3>
-    <div class="description">
-        <c:out value="${cms.description}"></c:out>
-    </div>
+    This is About Us page
 </div>
 <%@include file="../layouts/footer.jsp"%>
 </body>
