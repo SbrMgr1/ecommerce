@@ -8,6 +8,7 @@ public class ProductCategory {
     private String desc;
 
     public ProductCategory(){
+
         this.id = MyHelper.getRandomInt();
     }
 
