@@ -62,24 +62,6 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-<%--                    <tr>--%>
-<%--                        <td>1</td>--%>
-<%--                        <td>Electronics</td>--%>
-<%--                        <td>Mobile device</td>--%>
-<%--                        <td>--%>
-<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
-<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                    <tr>--%>
-<%--                        <td>2</td>--%>
-<%--                        <td>Electronics</td>--%>
-<%--                        <td>Laptop device</td>--%>
-<%--                        <td>--%>
-<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
-<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
                     <tbody>
 
                     <c:forEach items="${categoryList}" var="productCategory">
