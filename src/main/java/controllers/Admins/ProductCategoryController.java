@@ -14,21 +14,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/administration/product-cat")
 public class ProductCategoryController extends HttpServlet {
-    private ProductCategoryDao dao;
+
     Gson mapper = new Gson();
 
     @Override
-    public void init() throws ServletException {
-        dao = new ProductCategoryDao();
-    }
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<ProductCategory> categoryList = (List<ProductCategory>)this.getServletContext().getAttribute("productCategory");
 
+        ProductCategoryDao productCategoryDao = (ProductCategoryDao)this.getServletContext().getAttribute("categoryDao");
+
+        System.out.println(productCategoryDao);
+        List<ProductCategory> categoryList = productCategoryDao.getAllCategory().entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
         req.setAttribute("categoryList",categoryList);
 
         req.getRequestDispatcher("/WEB-INF/views/admins/productCategory.jsp").forward(req,resp);
