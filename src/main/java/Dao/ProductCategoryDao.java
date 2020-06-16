@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import java.util.HashMap;
 
 public class ProductCategoryDao {
+
     private HashMap<Long, ProductCategory> categoryList = new HashMap<>();
 
 
