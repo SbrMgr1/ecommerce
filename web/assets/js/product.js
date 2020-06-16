@@ -66,6 +66,9 @@ $(function () {
         }
     });
     $(document).on('click','.delete-btn',function () {
+        if (!confirm("Are you sure you want to delete this product?")){
+            return false;
+        }
         var row = $(this).parents('tr');
         var key = row.attr("data-key");
         $.ajax({

@@ -1,5 +1,6 @@
 package controllers.Guests;
 
+import Dao.ProductDao;
 import models.Product;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,11 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("title","Ecommerce");
 
-        List<Product> products = (List<Product>) this.getServletContext().getAttribute("products");
+        ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
+        List<Product> products = productDao.getProducts();
+        System.out.println("-----------------------");
+        System.out.println(products);
+        System.out.println("-----------------------");
         String param = req.getParameter("param");
         String priceSort = req.getParameter("priceSort");
 

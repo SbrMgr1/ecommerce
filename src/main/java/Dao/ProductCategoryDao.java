@@ -9,6 +9,10 @@ public class ProductCategoryDao {
 
     private HashMap<Long, ProductCategory> categoryList = new HashMap<Long, ProductCategory>();
 
+    public ProductCategoryDao(){
+        ProductCategory productCategory = new ProductCategory("Electronics","Laptops,Mobiles,Tvs");
+        categoryList.put(productCategory.getId(),productCategory);
+    }
 
     public ProductCategory findCategory(HttpServlet httpServlet, long id) {
         ProductCategoryDao productCategoryDao = (ProductCategoryDao) httpServlet.getServletContext().getAttribute("productCategoryDao");
