@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">CMS Page</h1>
 
-                <button class="btn btn-success" href="#demo" data-toggle="collapse">Collapsible</button>
+                <button class="btn btn-success" href="#demo" data-toggle="collapse">ADD Content</button>
                 <div id="demo" class="collapse">
                    <div class="form-group">
                        <label>Title</label><input type="text" name="title" id="title" class="form-control">

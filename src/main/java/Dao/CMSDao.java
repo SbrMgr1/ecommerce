@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 public class CMSDao {
+    HashMap<Integer, CMS> cmss=new HashMap<>();
     public CMSDao()
     {
-
+    cmss.put(generateId(),new CMS(generateId(),"Abcde1","ssadfg","this si description1"));
+    cmss.put(generateId(),new CMS(generateId(),"Abcde2","ssadfg","this si description2"));
     }
-    HashMap<Integer, CMS> cmss=new HashMap<>();
 
     public  void addCMS(CMS cms)
     {
@@ -27,19 +28,23 @@ public class CMSDao {
 
     public CMS findCMSById(int  id)
     {
-     return(cmss.get(id));
+
+        return(cmss.get(id));
     }
 
     public void deleteCMS(int id)
+
     {
         cmss.remove(id);
     }
 
     public void updateCMS(CMS cms){
+
         cmss.put(cms.getId(), cms);
     }
 
     public List<CMS> getAllCMS(){
+
         return new ArrayList<>(cmss.values());
     }
 

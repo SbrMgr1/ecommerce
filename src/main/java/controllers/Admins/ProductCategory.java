@@ -35,10 +35,6 @@ public class ProductCategory extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/views/admins/productCategory.jsp").forward(req,resp);
 
 
-
-
-
-
     }
 
     @Override
