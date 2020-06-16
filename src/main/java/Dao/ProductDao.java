@@ -13,7 +13,9 @@ public class ProductDao {
 
     public ProductDao(){
         products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2,1,"Macbook Pro 16"));
-        products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2,1,"Macbook Pro 16"));
+        products.add(new Product("Iphone Pro",2500.8,"iphone11.jpg",2,1,"Iphone Prog"));
+        products.add(new Product("Wireless Earphone",2500.8,"watch.jpg",2,1,"Iphone Prog"));
+        products.add(new Product("Veritas shoes",2500.8,"veritas.jpg",2,1,"Veritas"));
     }
     private int cnt = 0;
     public Product saveProduct(Product product){
@@ -31,6 +33,7 @@ public class ProductDao {
             }
         }).findFirst();
         if(product.getId()>0){
+
             //edit operation
             products.get(cnt).setName(localProduct.getName());
             products.get(cnt).setUnitPrice(localProduct.getUnitPrice());
