@@ -1,26 +1,27 @@
 package models;
 
+import helpers.MyHelper;
+
 public class CMS {
-    int id;
+    private Long id;
     private String title;
     private String slug;
     private String description;
-    public CMS(int id,String title, String slug, String description) {
-        this.id=id;
+    public CMS(String title, String slug, String description) {
+        this.id= MyHelper.getRandomInt();
         this.title = title;
         this.slug = slug;
         this.description = description;
     }
-    public CMS()
-    {
-
+    public CMS() {
+        this.id = MyHelper.getRandomInt();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,7 +38,7 @@ public class CMS {
     }
 
     public void setSlug(String slug) {
-        slug = slug;
+        this.slug = slug;
     }
 
     public String getDescription() {
