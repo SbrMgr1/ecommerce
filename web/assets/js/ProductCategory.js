@@ -53,7 +53,7 @@ $(function () {
         $.ajax({
             url:"/administration/product-cat",
             type:'post',
-            dataType:'json',
+            // dataType:'json',
             data:{
                 cat:JSON.stringify(myJson)
             }
@@ -90,11 +90,13 @@ $(function () {
         }
         var tr = $(this).parents('tr');
         var cat_id = tr.attr("data-key");
+
         $.post('/administration/delete-cat', {id: cat_id}, function (resp) {
             $(`tr[data-key="${cat_id}"]`).remove();
+            manageSerialNumber();
+
         }, 'json');
         e.preventDefault();
-        manageSerialNumber();
     })
 
 
@@ -105,7 +107,7 @@ $(function () {
         $('#catSubmit').find('[name="desc"]').val(tr.find("td:nth-child(3)").text());
         $('#catSubmit').find('[name="id"]').val(tr.attr("data-key"));
 
-        if (!$('.add-edit-btn').attr('aria-expanded')) {
+        if ($('.add-edit-btn').attr('aria-expanded')) {
             $('.add-edit-btn').click();
         }
         e.preventDefault();

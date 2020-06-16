@@ -1,4 +1,4 @@
-package controllers.Admins;
+package controllers.Admins.ProductCategory;
 
 import Dao.ProductCategoryDao;
 import com.google.gson.Gson;
