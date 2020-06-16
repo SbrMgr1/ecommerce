@@ -2,6 +2,7 @@ package WebListners;
 
 import Dao.CMSDao;
 import Dao.ProductCategoryDao;
+import Dao.ProductDao;
 import models.Product;
 import models.ProductCategory;
 import models.User;
@@ -38,11 +39,8 @@ public class MyContextListener implements ServletContextListener {
 //        servletContextEvent.getServletContext().setAttribute("users_for_crud",userlist.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()));
     }
     private void initProducts(ServletContextEvent servletContextEvent){
-
-        List<Product> products = new ArrayList<Product>();
-        products.add(new Product("Macbook Pro 16\"",2500.8,"macbook-pro.jpg",2,1,"Macbook Pro 16"));
-        products.add(new Product("Iphone 11 pro",800.5,"iphone11.jpg",2,1,"Iphone 11 pro"));
-        servletContextEvent.getServletContext().setAttribute("products",products);
+        ProductDao productDao = new ProductDao();
+        servletContextEvent.getServletContext().setAttribute("productDao",productDao);
     }
 
     private void intCMS(ServletContextEvent servletContextEvent) {
@@ -52,11 +50,7 @@ public class MyContextListener implements ServletContextListener {
     private void initCategory(ServletContextEvent servletContextEvent){
 
         ProductCategoryDao productCategoryDao = new ProductCategoryDao();
-        ProductCategory productCategory = new ProductCategory("Electronics","Laptops,Mobiles,Tvs");
-        productCategoryDao.addEditProductCategory(productCategory);
-        System.out.println("===============");
-        System.out.println(productCategoryDao);
-        System.out.println("===============");
+
         servletContextEvent.getServletContext().setAttribute("categoryDao",productCategoryDao);
     }
 

@@ -1,5 +1,6 @@
 package controllers.Guests;
 
+import Dao.ProductDao;
 import models.Product;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,8 @@ public class RemoveItem extends HttpServlet {
         Long id = Long.valueOf(req.getParameter("id"));
 
         //original products
-        List<Product> products = (List<Product>) this.getServletContext().getAttribute("products");
+        ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
+        List<Product> products = productDao.getProducts();
         if (products == null){
             products = new ArrayList<>();
         }
