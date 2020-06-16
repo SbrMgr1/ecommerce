@@ -11,8 +11,14 @@ public class CMSDao {
     HashMap<Long, CMS> cmss=new HashMap<Long, CMS>();
     public CMSDao()
     {
-        CMS cms1 = new CMS("Abcde1","ssadfg","this si description1");
+        CMS cms1 = new CMS("About Us","about-us","this si description1");
+        CMS cms2 = new CMS("Terms and Condition","terms-and-conditions","this si description1");
+        CMS cms3 = new CMS("Privacy Policy","privacy-policy","this si description1");
+        CMS cms4= new CMS("FAQ","faq","this si description1");
         cmss.put(cms1.getId(),cms1);
+        cmss.put(cms2.getId(),cms2);
+        cmss.put(cms3.getId(),cms3);
+        cmss.put(cms4.getId(),cms4);
     }
 
     public  void addCMS(CMS cms)
@@ -32,7 +38,7 @@ public class CMSDao {
         return(cmss.get(id));
     }
 
-    public void deleteCMS(int id)
+    public void deleteCMS(Long id)
 
     {
         cmss.remove(id);

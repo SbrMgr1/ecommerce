@@ -30,6 +30,7 @@
                 <table class="table table-hover" id="cms-table">
                     <thead>
                     <tr>
+<%--                        <th>#</th>--%>
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Description</th>
@@ -38,7 +39,9 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${cms}" var="cm">
+                        <c:set var="count" value="${count + 1}" scope="page"/>
                         <tr id="<c:out value="${cm.id}" />">
+<%--                            <td><c:out value="${count}"/></td>--%>
                             <td><c:out value="${cm.title}" /></td>
                             <td><c:out value="${cm.slug}" /></td>
                             <td><c:out value="${cm.description}" /></td>
