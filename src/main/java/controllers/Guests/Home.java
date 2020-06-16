@@ -20,13 +20,10 @@ public class Home extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("title","Ecommerce");
 
         ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
         List<Product> products = productDao.getProducts();
-        System.out.println("-----------------------");
-        System.out.println(products);
-        System.out.println("-----------------------");
+        req.setAttribute("title",this.getServletContext().getInitParameter("sitename"));
         String param = req.getParameter("param");
         String priceSort = req.getParameter("priceSort");
 
