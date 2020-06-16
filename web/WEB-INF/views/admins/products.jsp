@@ -92,7 +92,7 @@
             <tr data-key="${product.id}" data-desc="${product.desc}">
               <td>${count}</td>
               <td>${product.name}</td>
-              <td><img class="img-responsive" src="<c:url value="/assets/images/${product.producImg}"/>"/></td>
+              <td><img alt="${product.name}" class="img-responsive" src="<c:url value="/assets/images/${product.producImg}"/>"/></td>
               <td data-cat="${product.catId}">${catlist[product.catId].name}</td>
               <td class="text-right">${product.unitPrice}</td>
               <td class="text-right">${product.tax}</td>

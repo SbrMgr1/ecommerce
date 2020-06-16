@@ -8,11 +8,12 @@ $(function () {
         })
     }
     var catList = {};
-    $('#product-category').each(function (e) {
+    $('#product-category option').each(function (e) {
         if($(this).val()){
             catList[$(this).val()] = $(this).text();
         }
     })
+
     $('.product-form').submit(function (e) {
 
 
@@ -51,16 +52,17 @@ $(function () {
             if($('.product-form').find('[name="id"]').val()){
 
                 $(`tr[data-key="${product.id}"]`).find("td:nth-child(2)").text(product.name);
-                $(`tr[data-key="${product.id}"]`).find("td:nth-child(3)").attr("data-cat",product.catId).text(catName);
-                $(`tr[data-key="${product.id}"]`).find("td:nth-child(4)").text(product.unitPrice);
-                $(`tr[data-key="${product.id}"]`).find("td:nth-child(5)").text(product.tax);
+                $(`tr[data-key="${product.id}"]`).find("td:nth-child(3)").find("img").attr("src","/assets/images/"+product.producImg);
+                $(`tr[data-key="${product.id}"]`).find("td:nth-child(4)").attr("data-cat",product.catId).text(catName);
+                $(`tr[data-key="${product.id}"]`).find("td:nth-child(5)").text(product.unitPrice);
+                $(`tr[data-key="${product.id}"]`).find("td:nth-child(6)").text(product.tax);
 
             }else{
 
                 var html = `<tr data-key="${product.id}" data-desc="${product.desc}">
                   <td></td>
                   <td>${product.name}</td>
-                  <td><img class="img-responsive" src="/assets/images/${product.producImg}"/></td>
+                  <td><img alt="${product.name}" class="img-responsive" src="/assets/images/${product.producImg}"/></td>
                   <td data-cat="${product.catId}">${catName}</td>
                   <td class="text-right">${product.unitPrice}</td>
                   <td class="text-right">${product.tax}</td>

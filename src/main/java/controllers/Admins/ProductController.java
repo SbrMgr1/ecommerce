@@ -52,12 +52,16 @@ public class ProductController extends HttpServlet {
         if(!results[0].isEmpty()){
             tmp = mapper.fromJson(results[0],Product.class);
             if(!results[1].isEmpty()){
-                tmp = mapper.fromJson(results[0],Product.class);
+                tmp.setProducImg(results[1]);
             }
             ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
-            globalResp.setStatus(true);
-            globalResp.setMessage("Saved Succssfully.");
-            globalResp.setData(tmp);
+            Product pd = productDao.saveProduct(tmp);
+            if(pd != null){
+                globalResp.setData(pd);
+                globalResp.setStatus(true);
+                globalResp.setMessage("Saved Succssfully.");
+            }
+
         }
         resp.getWriter().print(mapper.toJson(globalResp));
 
@@ -74,7 +78,21 @@ public class ProductController extends HttpServlet {
                 if(f.getFieldName().equals("text_inputs")){
                     return_arr[0] = f.getString();
                 }else if(f.getFieldName().equals("file_input") && !f.isFormField()){
-                    return_arr[1] = f.getString();
+                    String fileName = String.valueOf(MyHelper.getRandomInt())+"-"+f.getName();
+                    String imagePath = "/assets/images";
+                    String absoluteDiskPath = this.getServletContext().getRealPath(imagePath);
+                    File file = new File(absoluteDiskPath+"/"+fileName);
+                    try {
+                        f.write(file);
+                        return_arr[1] = fileName;
+
+//                        BufferedImage img = ImageIO.read(file); // load image
+//                        BufferedImage scaledImg = Scalr.resize(img, Method.QUALITY, 1280, 960);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
             return return_arr;
