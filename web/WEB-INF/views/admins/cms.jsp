@@ -32,7 +32,8 @@
                     <tr>
                         <th>Title</th>
                         <th>Slug</th>
-                        <th>Action</th>
+                        <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -33,7 +33,7 @@ $(function()
             $(`tr[id="${data.id}"]`).find("td:nth-child(1)").text(data.title);
             $(`tr[id="${data.id}"]`).find("td:nth-child(2)").text(data.slug);
             $(`tr[id="${data.id}"]`).find("td:nth-child(3)").text(data.description);
-          
+
         }
 
     }
@@ -48,14 +48,6 @@ $(function()
     function returnedDel(data)
     {
         alert(data);
-        // console.log(data);
-        // for (let val in data)
-        // {
-        //     alert(data[val][id]);
-        //     var tr=`<tr><td>${data[val][title]}</td><td>${data[val][slug]}</td><td><button class="btn btn-primary btn-xs edit-btn" value="${data[val][id]}" onclick="edit(${data[val][id]})"><i class="fa fa-edit"></i></button>
-        //       <button class="btn btn-danger btn-xs delete-brn" value="${data[val][id]}"><i class="fa fa-trash-o"></i></button></td></tr>`;
-        //     $('#cms-table>tbody').append(tr);
-        // }
     }
     $(document).on('click','.edit-btn',function (e) {
         var id=$(this).val();
