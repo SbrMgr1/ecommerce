@@ -34,11 +34,12 @@ public class UserController extends HttpServlet {
         User user = mapper.fromJson(jsonString, User.class);
         HashMap<String, User> userlist = (HashMap<String, User>) this.getServletContext().getAttribute("users");
 
+        System.out.println(jsonString);
+
         userlist.put(user.getEmail(), user);
         this.getServletContext().setAttribute("users", userlist);
 
         PrintWriter out = resp.getWriter();
-//        out.print(userlist.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()));
         out.print(mapper.toJson(user));
 
         System.out.println(mapper.toJson(user));

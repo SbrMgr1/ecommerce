@@ -7,85 +7,102 @@
 --%>
 
 
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <!DOCTYPE html>
-    <html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
 
-    <%@ include file="../../layouts/admin_head.jsp" %>
+<%@ include file="../../layouts/admin_head.jsp" %>
 
-    <body>
+<body>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <%@ include file="../../layouts/admin_menu.jsp" %>
+    <%@ include file="../../layouts/admin_menu.jsp" %>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Product Management</h1>
-
-
-                    <button class="btn btn-success" href="#demo" data-toggle="collapse">AddCategory</button>
-
-                    <div id="demo" class="collapse">
-
-                        <form>
-                            <div class="form-group">
-
-                                <label for="catName">Product Category Name</label>
-                                <input type="text" class="form-control" id="catName"
-
-                                       aria-describedby="prodHelp" placeholder="Enter product Category name..">
-
-                            </div>
-                            <div class="form-group">
-
-                                <label for="descrip">Description</label>
-                                <textarea name="descrip" class="form-control" id="descrip"
-                                          placeholder="Description..." rows="5" cols="100"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" id="catSubmit">ADD</button>
-
-                        </form>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Product Management</h1>
 
 
-                    </div>
+                <button class="btn btn-success" href="#demo" data-toggle="collapse">AddCategory</button>
 
-                    <table class="table table-hover" id="prod-cat-table">
+                <div id="demo" class="collapse">
 
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Product-category Name</th>
-                            <th>Product Description</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <form id="catSubmit" method="post" >
+                        <div class="form-group">
+                            <input type="hidden" name="psize" id="psize">
 
-                        <c:forEach items="${categoryList}" var="productCategory" >
-                            <c:set var="count" value="${count + 1}" scope="page"/>
-                            <tr>
-                                <td><c:out value="${count}"/></td>
-                                <td><c:out value="${productCategory.name}"/></td>
-                                <td><c:out value="${productCategory.desc}"/> </td>
-                                <td>
-                                    <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                            <label for="catName">Product Category Name</label>
+                            <input type="text" class="form-control" id="catName" placeholder="Enter product Category name.." required>
 
-                        </tbody>
-                    </table>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="descrip">Description</label>
+                            <textarea name="descrip" class="form-control" id="descrip"
+                                      placeholder="Description..." rows="5" cols="100"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">ADD</button>
+
+                    </form>
+
+
                 </div>
-                <!-- /.col-lg-12 -->
+
+                <table class="table table-hover" id="prod-cat-table">
+
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product-category Name</th>
+                        <th>Product Description</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+<%--                    <tr>--%>
+<%--                        <td>1</td>--%>
+<%--                        <td>Electronics</td>--%>
+<%--                        <td>Mobile device</td>--%>
+<%--                        <td>--%>
+<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
+<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td>2</td>--%>
+<%--                        <td>Electronics</td>--%>
+<%--                        <td>Laptop device</td>--%>
+<%--                        <td>--%>
+<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
+<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+                    <tbody>
+
+                    <c:forEach items="${categoryList}" var="productCategory">
+                        <c:set var="count" value="${count + 1}" scope="page"/>
+                        <tr data-key="{productCategory.id}">
+                            <td><c:out value="${count}"/></td>
+                            <td><c:out value="${productCategory.name}"/></td>
+                            <td><c:out value="${productCategory.desc}"/></td>
+                            <td>
+                                <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+                    </tbody>
+                </table>
             </div>
-            <!-- /.row -->
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
 
 
 </div>

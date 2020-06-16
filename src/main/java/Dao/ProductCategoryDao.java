@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import java.util.HashMap;
 
 public class ProductCategoryDao {
+
     private HashMap<Long, ProductCategory> categoryList = new HashMap<>();
 
 
@@ -25,8 +26,9 @@ public class ProductCategoryDao {
     }
 
     public void addProductCategory(String name, String desc) {
-        long length = categoryList.size() + 1;
-        categoryList.put(length, new ProductCategory(name, desc));
+        ProductCategory productCategory = new ProductCategory(name, desc);
+
+        categoryList.put(productCategory.getId(), productCategory);
     }
 
     public void deleteProductCategory(Long id){

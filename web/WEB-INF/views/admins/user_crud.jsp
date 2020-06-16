@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" value=" ">
                         <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
                     </form>
                 </div>

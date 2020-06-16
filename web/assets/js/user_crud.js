@@ -11,7 +11,7 @@ $(function () {
     $("#my-form").submit(function (e) {
         e.preventDefault();
 
-        let id = $('#id').val();
+        let id = $('[name="id"]').val();
         let name = $('#username').val();
         let email = $('#userEmail').val();
         let password = $('#userPassword').val();
@@ -31,10 +31,10 @@ $(function () {
         $('tbody').append(tr);
         manageSerialNumber();
         $('#my-form')[0].reset();
-
+        $('[name="id"]').val(" ");
     }
 
-    $(document).on('click','.edt-btn',function (e) {
+    $(document).on('click','.edit-btn',function (e) {
         var tr = $(this).parents('tr');
         $('#my-form').find('#username').val(tr.find("td:nth-child(2)").text());
         $('#my-form').find('#userEmail').val(tr.find("td:nth-child(3)").text());

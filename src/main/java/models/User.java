@@ -17,6 +17,13 @@ public class User {
         this.password = password;
         this.name = name;
     }
+
+//    public User(String id, String name,String email, String password){
+//        this.id = MyHelper.getRandomInt();
+//        this.email = email;
+//        this.password = password;
+//        this.name = name;
+//    }
     public User(String name,String email, String password,UserRoles role){
         this.id = MyHelper.getRandomInt();
         this.email = email;

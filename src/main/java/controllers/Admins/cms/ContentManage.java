@@ -19,10 +19,6 @@ public class ContentManage extends HttpServlet {
 
     Gson mapper=new Gson();
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
