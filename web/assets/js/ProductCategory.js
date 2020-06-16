@@ -86,15 +86,19 @@ $(function () {
 
     $(document).on('click', '.delete-btn', function (e) {
         if(!confirm('Are you sure you want to delete this category?')){
+
             return false;
         }
+
         var tr = $(this).parents('tr');
         var cat_id = tr.attr("data-key");
+
         $.post('/administration/delete-cat', {id: cat_id}, function (resp) {
             $(`tr[data-key="${cat_id}"]`).remove();
+            manageSerialNumber();
+
         }, 'json');
         e.preventDefault();
-        manageSerialNumber();
     })
 
 
