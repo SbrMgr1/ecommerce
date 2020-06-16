@@ -35,9 +35,7 @@
                             <input type="hidden" name="psize" id="psize">
 
                             <label for="catName">Product Category Name</label>
-                            <input type="text" class="form-control" id="catName"
-
-                                   aria-describedby="prodHelp" placeholder="Enter product Category name..">
+                            <input type="text" class="form-control" id="catName" placeholder="Enter product Category name.." required>
 
                         </div>
                         <div class="form-group">
