@@ -30,6 +30,7 @@ public class ProductCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductCategory> categoryList = (List<ProductCategory>)this.getServletContext().getAttribute("productCategory");
+
         req.setAttribute("categoryList",categoryList);
 
         req.getRequestDispatcher("/WEB-INF/views/admins/productCategory.jsp").forward(req,resp);
