@@ -43,7 +43,7 @@ $(function () {
         var cat_id = $(this).val();
         $.post('/administrator/deleteCat', {id: cat_id}, delCat, 'json');
         $(this).parents('tr').remove();
-
+        manageSerialNumber();
     })
 
     function delCat(data) {

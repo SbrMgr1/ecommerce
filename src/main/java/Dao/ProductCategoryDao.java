@@ -15,6 +15,7 @@ public class ProductCategoryDao {
         if (categoryList == null) {
             return null;
         } else {
+
             ProductCategory productCategory = (ProductCategory) categoryList.get(id);
             if (productCategory != null) {
                 return productCategory;
