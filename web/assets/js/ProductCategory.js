@@ -10,12 +10,12 @@ $(function () {
 
 
     $("#catSubmit").submit(function (e) {
-        alert("hello");
+        // alert("hello");
         var catName = $('#catName').val();
         var descrip = $('#descrip').val();
         var productCategory = {
-            catName: catName,
-            descrip: descrip
+            name: catName,
+            desc: descrip
         }
         $.post('/administration/product-cat', {productCategory: JSON.stringify(productCategory)}, addCatgory, 'json')
         e.preventDefault();
@@ -23,15 +23,19 @@ $(function () {
     })
 
     function addCatgory(data) {
-        alert('here');
+        // alert('here');
         console.log(data);
-        var tr = `<tr><td>${data.catName}</td>
-                 <td>${data.descrip}</td>
+        var tr = `<tr>
+                    <td></td>
+                    <td>${data.name}</td>
+                 <td>${data.desc}</td>
                  <td><button class="btn btn-primary btn-xs edit-btn" value="${data.id}">
                  <i class="fa fa-edit"></i></button>
               <button class="btn btn-danger btn-xs delete-btn" value="$(data.id)">
               <i class="fa fa-trash-o"></i></button></td></tr>`;
         $('#prod-cat-table>tbody').append(tr);
+        manageSerialNumber();
+        $("#catSubmit")[0].reset();
 
     }
 
@@ -40,7 +44,6 @@ $(function () {
         $.post('/administrator/deleteCat', {id: cat_id}, delCat, 'json');
         $(this).parents('tr').remove();
         manageSerialNumber();
-
     })
 
     function delCat(data) {
@@ -54,6 +57,7 @@ $(function () {
             document.getElementById("psize").value = $('#psize').val() - 1;
 
         }
+        manageSerialNumber();
 
 
     }
@@ -67,6 +71,7 @@ $(function () {
 
         $('#catName').val(catName);
         $('#descrip').val(desc);
+
 
 
         e.preventDefault();

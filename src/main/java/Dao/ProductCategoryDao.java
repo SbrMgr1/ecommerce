@@ -7,14 +7,20 @@ import java.util.HashMap;
 
 public class ProductCategoryDao {
 
-    private HashMap<Long, ProductCategory> categoryList = new HashMap<>();
+    private HashMap<Long, ProductCategory> categoryList = new HashMap<Long, ProductCategory>();
 
+    public ProductCategoryDao(){
+        ProductCategory productCategory = new ProductCategory("Electronics","Laptops,Mobiles,Tvs");
+        categoryList.put(productCategory.getId(),productCategory);
+    }
 
     public ProductCategory findCategory(HttpServlet httpServlet, long id) {
-        categoryList = (HashMap<Long, ProductCategory>) httpServlet.getServletContext().getAttribute("productCategories");
+        ProductCategoryDao productCategoryDao = (ProductCategoryDao) httpServlet.getServletContext().getAttribute("productCategoryDao");
+        categoryList = productCategoryDao.getAllCategory();
         if (categoryList == null) {
             return null;
         } else {
+
             ProductCategory productCategory = (ProductCategory) categoryList.get(id);
             if (productCategory != null) {
                 return productCategory;
@@ -25,9 +31,9 @@ public class ProductCategoryDao {
         }
     }
 
-    public void addProductCategory(String name, String desc) {
-        long length = categoryList.size() + 1;
-        categoryList.put(length, new ProductCategory(name, desc));
+    public void addEditProductCategory(ProductCategory productCategory) {
+
+        categoryList.put(productCategory.getId(), productCategory);
     }
 
     public void deleteProductCategory(Long id){
@@ -36,11 +42,6 @@ public class ProductCategoryDao {
     }
     public HashMap<Long,ProductCategory> getAllCategory(){
         return categoryList;
-    }
-    public void editCategory(Long id,String name,String desc){
-        if(categoryList.containsKey(id)){
-            categoryList.put(id,new ProductCategory(name,desc));
-        }
     }
 }
 

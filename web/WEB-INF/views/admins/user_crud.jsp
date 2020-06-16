@@ -16,9 +16,9 @@
             <div class="col-lg-12">
                 <h1 class="page-header">User Management</h1>
 
-                <button class="btn btn-success" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Add / Edit</button>
+                <button class="btn btn-success add-edit-btn" style="margin-bottom: 15px" href="#demo" data-toggle="collapse">Add / Edit</button>
                 <div id="demo" class="collapse">
-                    <form>
+                    <form id="my-form">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -39,6 +39,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="id" value="">
                         <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
                     </form>
                 </div>
@@ -60,8 +61,8 @@
                             <td>${user.name}</td>
                             <td>${user.email}</td>
                             <td>
-                                <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                <a class="btn btn-primary btn-xs edit-btn"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger btn-xs dlt-btn"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     </c:forEach>

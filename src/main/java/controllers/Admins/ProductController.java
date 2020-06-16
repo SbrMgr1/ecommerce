@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import Dao.ProductDao;
 import com.google.gson.Gson;
 import helpers.MyHelper;
 import models.Product;
@@ -28,37 +29,10 @@ public class ProductController extends HttpServlet {
     Gson mapper = new Gson();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<ProductController> productList = (List<ProductController>)this.getServletContext().getAttribute("products");
+        ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
+        List<Product> productList = productDao.getProducts();
         req.setAttribute("productList",productList);
         req.getRequestDispatcher("/WEB-INF/views/admins/products.jsp").forward(req,resp);
-    }
-
-
-    protected void doPosto(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
-        try {
-            List<FileItem> fileItems = servletFileUpload.parseRequest(req);
-            for (FileItem fileItem:fileItems){
-                try{
-                    String fileName = String.valueOf(MyHelper.getRandomInt())+"-"+fileItem.getName();
-                    String imagePath = "/assets/images";
-                    String absoluteDiskPath = this.getServletContext().getRealPath(imagePath);
-                    File file = new File(absoluteDiskPath+"/"+fileName);
-                    fileItem.write(file);
-
-                } catch (FileUploadException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (FileUploadException e) {
-            e.printStackTrace();
-        }
-
-
-
     }
 
     @Override
@@ -108,53 +82,14 @@ public class ProductController extends HttpServlet {
                 }
                 return true;
             }).collect(Collectors.toList());
-
-            resp.getWriter().print(mapper.toJson(saveToContext(tmp)));
+            ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
+            resp.getWriter().print(mapper.toJson(productDao.saveProduct(tmp)));
 
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-    private int cnt = 0;
-    private Product saveToContext( Product product){
-
-        List<Product> products = (List<Product>) this.getServletContext().getAttribute("products");
-        if (products == null){
-            products = new ArrayList<Product>();
-        }
-        cnt = -1;
-        Product localProduct = product;
-        Optional<Product> optional = products.stream().filter((p)->{
-            cnt++;
-            if(p.getId() == Long.valueOf(localProduct.getId())){
-                return true;
-            }else{
-                return false;
-            }
-        }).findFirst();
-        if(product.getId()>0){
-            //edit operation
-            products.get(cnt).setName(localProduct.getName());
-            products.get(cnt).setUnitPrice(localProduct.getUnitPrice());
-            products.get(cnt).setProducImg(localProduct.getProducImg());
-            products.get(cnt).setTax(localProduct.getTax());
-            products.get(cnt).setCatId(localProduct.getCatId());
-            products.get(cnt).setDesc(localProduct.getDesc());
-
-            this.getServletContext().setAttribute("products",products);
-            return products.get(cnt);
-
-        }else{
-            //add new item
-            product.setId(MyHelper.getRandomInt());
-            products.add(product);
-            this.getServletContext().setAttribute("products",products);
-            return product;
-        }
-
 
     }
 }

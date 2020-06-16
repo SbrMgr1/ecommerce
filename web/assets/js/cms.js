@@ -33,7 +33,7 @@ $(function()
             $(`tr[id="${data.id}"]`).find("td:nth-child(1)").text(data.title);
             $(`tr[id="${data.id}"]`).find("td:nth-child(2)").text(data.slug);
             $(`tr[id="${data.id}"]`).find("td:nth-child(3)").text(data.description);
-            alert(" Value Updated Sucessfully!!!");
+          
         }
 
     }

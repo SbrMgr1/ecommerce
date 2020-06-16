@@ -35,9 +35,7 @@
                             <input type="hidden" name="psize" id="psize">
 
                             <label for="catName">Product Category Name</label>
-                            <input type="text" class="form-control" id="catName"
-
-                                   aria-describedby="prodHelp" placeholder="Enter product Category name..">
+                            <input type="text" class="form-control" id="catName" placeholder="Enter product Category name.." required>
 
                         </div>
                         <div class="form-group">
@@ -64,24 +62,6 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-<%--                    <tr>--%>
-<%--                        <td>1</td>--%>
-<%--                        <td>Electronics</td>--%>
-<%--                        <td>Mobile device</td>--%>
-<%--                        <td>--%>
-<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
-<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                    <tr>--%>
-<%--                        <td>2</td>--%>
-<%--                        <td>Electronics</td>--%>
-<%--                        <td>Laptop device</td>--%>
-<%--                        <td>--%>
-<%--                            <a class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>--%>
-<%--                            <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
                     <tbody>
 
                     <c:forEach items="${categoryList}" var="productCategory">
