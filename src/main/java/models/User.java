@@ -35,7 +35,7 @@ public class User {
         return password.equals(this.password);
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
