@@ -51,6 +51,7 @@ $(function () {
         e.preventDefault();
     })
     $(document).on('click','.edit-btn',function (e) {
+
         var tr = $(this).parents('tr');
         $('.product-form').find('[name="name"]').val(tr.find("td:nth-child(2)").text());
         $('.product-form').find('[name="catId"]').val(tr.find("td:nth-child(3)").text());
@@ -58,7 +59,6 @@ $(function () {
         $('.product-form').find('[name="tax"]').val(tr.find("td:nth-child(5)").text());
         $('.product-form').find('[name="desc"]').val(tr.attr("data-desc"));
         $('.product-form').find('[name="id"]').val(tr.attr("data-key"));
-
 
         if(!$('.add-edit-btn').attr('aria-expanded')){
             $('.add-edit-btn').click();

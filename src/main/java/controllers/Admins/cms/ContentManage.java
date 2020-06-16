@@ -19,16 +19,12 @@ public class ContentManage extends HttpServlet {
 
     Gson mapper=new Gson();
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
-//        List<CMS> cmss= cmsDao.getAllCMS();
-//        req.setAttribute("cms",cmss);
+        CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
+        List<CMS> cmss= cmsDao.getAllCMS();
+        req.setAttribute("cms",cmss);
        req.getRequestDispatcher("/WEB-INF/views/admins/cms.jsp").forward(req,resp);
     }
 
