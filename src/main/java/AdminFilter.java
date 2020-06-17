@@ -21,16 +21,16 @@ public class AdminFilter implements Filter {
 
         HttpServletRequest httpReqest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResp = (HttpServletResponse) servletResponse;
-        User user = (User) httpReqest.getSession().getAttribute("adminInfo");
-        filterChain.doFilter(servletRequest, servletResponse);
-//        if(user == null){
-//            httpResp.sendRedirect("/login");//redirecting to login page
-//        }else if(user.getRole() == UserRoles.ADMIN){
-//            filterChain.doFilter(servletRequest, servletResponse);
-//        }else {
-//            System.out.println("session expired");
-//            httpResp.sendRedirect("/login");//redirecting to login page
-//        }
+        User admin = (User) httpReqest.getSession().getAttribute("adminInfo");
+        //filterChain.doFilter(servletRequest, servletResponse);
+        if(admin == null){
+            httpResp.sendRedirect("/login");//redirecting to login page
+        }else if(admin.getRole() == UserRoles.ADMIN){
+            filterChain.doFilter(servletRequest, servletResponse);
+        }else {
+            System.out.println("session expired");
+            httpResp.sendRedirect("/login");//redirecting to login page
+        }
     }
 
     @Override

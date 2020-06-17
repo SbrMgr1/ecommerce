@@ -23,12 +23,12 @@ public class MyFilter implements Filter {
         HttpServletResponse httpResp = (HttpServletResponse) servletResponse;
         User user = (User) httpReqest.getSession().getAttribute("userInfo");
         if(user == null){
-            httpResp.sendRedirect("/login");//redirecting to login page
+            httpResp.sendRedirect("/login?msg=Please login first.");//redirecting to login page
         }else if(user.getRole() == UserRoles.USER){
             filterChain.doFilter(servletRequest, servletResponse);
         }else {
             System.out.println("session expired");
-            httpResp.sendRedirect("/login");//redirecting to login page
+            httpResp.sendRedirect("/login?msg=Please login first.");//redirecting to login page
         }
     }
 

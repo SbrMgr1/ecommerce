@@ -16,6 +16,10 @@
             href="<c:url value='/assets/css/style.css'/>"
             rel="stylesheet"
     >
+    <link
+            href="<c:url value='/assets/font-awesome/css/font-awesome.css'/>"
+            rel="stylesheet"
+    >
     <script src="<c:url value="/assets/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/assets/js/script.js"/>"></script>

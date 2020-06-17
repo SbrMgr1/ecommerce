@@ -69,26 +69,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand active" href="<c:url value="/" />"><span class="glyphicon glyphicon-home"></span> Home</a>
+                    <a class="navbar-brand active" href="<c:url value="/" />"><span class="fa fa-home"></span> Home</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="<c:url value='/page/about-us'/>"><span class="glyphicon glyphicon-th-large"></span> About Us</a></li>
+                        <li><a href="<c:url value='/page/about-us'/>"><span class="fa fa-info"></span> About Us</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.userInfo != null}">
                                 <li>
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My account <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="<c:url value="/account/profile"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                            <a href="<c:url value="/account"/>"><span class="fa fa-dashboard"></span> Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="<c:url value="/account/change-password"/>"><span class="glyphicon glyphicon-camera"></span> ${sessionScope.userInfo.email}</a>
+                                            <a href="<c:url value="/account/change-password"/>"><span class="fa fa-user"></span> ${sessionScope.userInfo.email}</a>
                                         </li>
                                         <li>
-                                            <a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                            <a href="<c:url value="/logout"/>"><span class="fa fa-sign-out"></span> Logout</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -96,10 +96,10 @@
                             <c:otherwise>
                                 <li>
                                     <a
-                                            href="<c:url value="/login"/>"><span class="glyphicon glyphicon-log-in"></span> Sign in
+                                            href="<c:url value="/login"/>"><span class="fa fa-sign-in"></span> Sign in
                                     </a>
                                 </li>
-                                <li><a href="<c:url value='/signup'/>"><span class="glyphicon glyphicon-user"></span> Join Us</a></li>
+                                <li><a href="<c:url value='/signup'/>"><span class="fa fa-user"></span> Join Us</a></li>
                             </c:otherwise>
                         </c:choose>
                         <%--                <li class="dropdown">--%>
