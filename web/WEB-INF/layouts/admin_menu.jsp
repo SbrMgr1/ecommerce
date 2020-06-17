@@ -234,7 +234,7 @@
                     <a href="<c:url value="/administration"/>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Product Management<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-list"></i> Product Management<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 
                         <li>
@@ -244,10 +244,10 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="<c:url value="/administration/cms-managent"/>"><i class="fa fa-table fa-fw"></i> CMS Management</a>
+                    <a href="<c:url value="/administration/cms-managent"/>"><i class="fa fa-file-text"></i> CMS Management</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Product Cat Management<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-tags"></i> Product Cat Management<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 
                         <li>

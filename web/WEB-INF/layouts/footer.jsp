@@ -19,8 +19,11 @@
             <div class="col-md-6 mt-md-0 mt-3">
 
                 <!-- Content -->
-                <h5 class="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
+                <h5 class="text-uppercase">${initParam.sitename}</h5>
+                <p>Keep in touch</p>
+                <p><i class="fa fa-facebook btn btn-sm btn-primary"></i>
+                    <i class="fa fa-youtube btn btn-danger btn-sm"></i>
+                    <i class="fa fa-twitter btn btn-info btn-sm"></i></p>
 
             </div>
             <!-- Grid column -->
@@ -62,16 +65,10 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="#!">Contact Us</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
+                        <a href="#!">Our Partners</a>
                     </li>
                 </ul>
 

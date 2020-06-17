@@ -75,7 +75,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="<c:url value='/page/about-us'/>"><span class="fa fa-info"></span> About Us</a></li>
+                        <li><a href="<c:url value='/page/about-us'/>"><span class="fa fa-info-circle"></span> About Us</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.userInfo != null}">
                                 <li>
