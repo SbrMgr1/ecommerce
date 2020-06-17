@@ -13,12 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 @WebServlet("/administration/cms-managent")
 public class ContentManage extends HttpServlet {
 
     Gson mapper=new Gson();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");

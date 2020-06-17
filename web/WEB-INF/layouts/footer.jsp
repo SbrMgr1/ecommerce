@@ -31,7 +31,7 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">Quick Links</h5>
 
                 <ul class="list-unstyled">
                     <li>
@@ -86,7 +86,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        <a href="#"> Cosmic Ecommerce</a>
     </div>
     <!-- Copyright -->
 
