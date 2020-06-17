@@ -5,6 +5,7 @@ import models.UserRoles;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +50,13 @@ public class SignUp extends HttpServlet {
             }
             if(errors.isEmpty()){
                 userlist.put(user1.getEmail(),user1);
+                
+                Cookie cookie = new Cookie("name",null);
+                cookie.setMaxAge(0);
+                resp.addCookie(cookie);
+
                 resp.sendRedirect("/login?success_msg=Your account has been registered successfully.");
+
             }else{
                 req.setAttribute("errors",errors);
                 req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req,resp);
