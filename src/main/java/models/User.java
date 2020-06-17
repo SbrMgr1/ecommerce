@@ -19,7 +19,7 @@ public class User {
     }
 
 //    public User(String id, String name,String email, String password){
-//        this.id = MyHelper.getRandomInt();
+//        this.id = id;
 //        this.email = email;
 //        this.password = password;
 //        this.name = name;

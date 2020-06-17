@@ -22,13 +22,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="username">Name</label>
                                     <input type="text" class="form-control" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="userEmail">Email address</label>
+                                    <label for="userEmail">Email Address</label>
                                     <input type="email" class="form-control" id="userEmail" placeholder="Email">
                                 </div>
                             </div>
@@ -40,16 +40,16 @@
                             </div>
                         </div>
                         <input type="hidden" name="id" value="">
-                        <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
+                        <button type="submit" style="margin-bottom: 15px" class="btn btn-primary">Save</button>
                     </form>
                 </div>
                 <c:set var="count" value="0" scope="page" />
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>User Id</th>
-                        <th>Username</th>
-                        <th>Email</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email Address</th>
                         <th>Action</th>
                     </tr>
                     </thead>

@@ -7,7 +7,6 @@ $(function () {
             $(this).find("td:nth-child(1)").text(sn++);
         })
     }
-
     $("#my-form").submit(function (e) {
         e.preventDefault();
 
@@ -21,22 +20,36 @@ $(function () {
         if(id){
             myJson.id = id;
         }
+        if(name=="" || email=="" || password ==""){
+            alert("Fields should not be empty!!");
+        } else if(!validateEmail(email)){
+            alert("You have entered an invalid email address!");
+        } else {
+            $.post('/administration/user', {userdata: JSON.stringify(myJson)}, addUser,'json');
+        }
 
-        $.post('/administration/user', {userdata: JSON.stringify(myJson)}, addUser,'json')
     });
 
-    function addUser(data) {
+    function addUser(resp) {
         // let last_index = $('tbody tr').last().children().first().text();
         // var td0=$('<td>').text(parseInt(last_index)+1);
-        if(!$('#my-form').find('[name="id"]').val()){
-            var td0=$('<td>')
-            var td1 = $('<td>').text(data.name);
-            var td2 = $('<td>').text(data.email);
-            var tr = $('<tr>').append(td0).append(td1).append(td2).append($('tbody tr td').last().clone());
-            $('tbody').append(tr);
+
+        if(resp.status==true) {
+
+            if(!$('#my-form').find('[name="id"]').val()){
+                var td0=$('<td>')
+                var td1 = $('<td>').text(resp.data.name);
+                var td2 = $('<td>').text(resp.data.email);
+                var tr = $('<tr>').append(td0).append(td1).append(td2).append($('tbody tr td').last().clone());
+                $('tbody').append(tr);
+            } else {
+                $(`tr[data-key="${resp.data.id}"]`).find("td:nth-child(2)").text(resp.data.name);
+                $(`tr[data-key="${resp.data.id}"]`).find("td:nth-child(3)").text(resp.data.email);
+            }
+            alert(resp.message);
+
         } else {
-            $(`tr[data-key="${data.id}"]`).find("td:nth-child(2)").text(data.name);
-            $(`tr[data-key="${data.id}"]`).find("td:nth-child(3)").text(data.email);
+            alert(resp.message);
         }
         manageIndex();
         $('#my-form')[0].reset();
@@ -71,4 +84,11 @@ $(function () {
         });
     })
 
+    function validateEmail(email) {
+        if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 });

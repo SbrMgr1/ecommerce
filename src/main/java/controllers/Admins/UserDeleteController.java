@@ -1,4 +1,4 @@
-package controllers.Admins.cms;
+package controllers.Admins;
 
 import models.User;
 
