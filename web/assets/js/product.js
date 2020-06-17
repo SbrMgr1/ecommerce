@@ -20,20 +20,30 @@ $(function () {
 
         var formData = new FormData();
 
-        var text_inputs = {
-            name: $(this).find('[name="name"]').val(),
-            catId: $(this).find('[name="catId"]').val(),
-            unitPrice: $(this).find('[name="unitPrice"]').val(),
-            tax: $(this).find('[name="tax"]').val(),
-            desc: $(this).find('[name="desc"]').val()
-        };
+        var text_inputs = {};
         if ($(this).find('[name="id"]').val()){
             text_inputs.id = $(this).find('[name="id"]').val()
         }
+        if($(this).find('[name="name"]').val()){
+            text_inputs.name = $(this).find('[name="name"]').val();
+        }
+        if ($(this).find('[name="catId"]').val()){
+            text_inputs.catId = $(this).find('[name="catId"]').val();
+        }
+        if ($(this).find('[name="unitPrice"]').val()){
+            text_inputs.unitPrice = $(this).find('[name="unitPrice"]').val();
+        }
+        if ($(this).find('[name="tax"]').val()){
+            text_inputs.tax = $(this).find('[name="tax"]').val();
+        }
+        if ($(this).find('[name="desc"]').val()){
+            text_inputs.desc = $(this).find('[name="desc"]').val();
+        }
+
         var file_input = $('[name="producImg"]')[0].files[0];
         formData.append("text_inputs",JSON.stringify(text_inputs));
         formData.append("file_input",file_input);
-
+        $('.error-container').html("");
         $.ajax({
             url:"/administration/product",
             type:'post',
@@ -44,6 +54,15 @@ $(function () {
             data:formData
         }).done(function (resp) {
             var product = resp.data;
+            if(resp.status == false){
+                    $('.error-container').html(resp.message);
+                    return true;
+            }else{
+                $('.error-container').html(`<div class="alert alert-success">
+                    ${resp.message}
+                </div>`)
+
+            }
 
             var catName = '';
             if(catList[product.catId]){
