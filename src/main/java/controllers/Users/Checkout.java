@@ -18,7 +18,7 @@ public class Checkout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HashMap<Long, Product> oldProduct = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+        HashMap<Long, Product> oldProduct = (HashMap<Long,Product>) req.getSession().getAttribute("cart_item");
         if(oldProduct == null){
             oldProduct = new HashMap<Long,Product>();
         }
@@ -30,7 +30,7 @@ public class Checkout extends HttpServlet {
             req.setAttribute("rand_total",products.stream().mapToDouble((pro)->pro.getQty()*pro.getUnitPrice()).sum());
             req.setAttribute("products",products);
 
-            req.getSession().setAttribute("cart-item",null);
+            req.getSession().setAttribute("cart_item",null);
             //payment gateaway process is remaining
             req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req,resp);
         }

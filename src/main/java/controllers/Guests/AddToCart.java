@@ -30,7 +30,7 @@ public class AddToCart extends HttpServlet {
             products = new ArrayList<Product>();
         }
 
-        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart_item");
         if(oldCartItems == null){
             oldCartItems = new HashMap<Long,Product>();
         }
@@ -39,8 +39,8 @@ public class AddToCart extends HttpServlet {
             Product product  = result.get();
             product.setQty(qty);
             oldCartItems.put(id,product);
-            req.getSession().setAttribute("cart-item", oldCartItems);
-            oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+            req.getSession().setAttribute("cart_item", oldCartItems);
+            oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart_item");
             resp.getWriter().println(oldCartItems.size());
 
         }else{

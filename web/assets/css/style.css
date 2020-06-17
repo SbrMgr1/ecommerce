@@ -134,3 +134,12 @@
 .p-15{
     padding: 15px;
 }
+.check-icon{
+    display: none !important;
+}
+.added .check-icon{
+    display: inline-block !important;
+}
+.added .add-to-cart-btn{
+    display: inline-block !important;
+}

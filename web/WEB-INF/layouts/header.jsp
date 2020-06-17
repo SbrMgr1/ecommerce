@@ -43,16 +43,12 @@
                     <a
                             href="<c:url value="/cart-details" />"
                     ><span class="glyphicon glyphicon-shopping-cart"></span>
-                        <%
-                            HashMap<Long, Product> oldProduct = (HashMap<Long,Product>) request.getSession().getAttribute("cart-item");
-                            int _count = 0;
-                            if(oldProduct != null){
-                                _count = oldProduct.size();
-                            }
-                        %>
-                        <span class="item-count">
-                    <%=_count%>
-                </span>
+                        <c:set var="cart_cnt" value="0"></c:set>
+                        <c:if test="${sessionScope.cart_item != null}">
+                            <c:set var="cart_cnt" value="${sessionScope.cart_item.size()}"></c:set>
+                        </c:if>
+
+                        <span class="item-count">${cart_cnt}</span>
                     </a>
                 </div>
             </div>

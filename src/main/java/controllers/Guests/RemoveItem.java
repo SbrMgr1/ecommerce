@@ -29,14 +29,14 @@ public class RemoveItem extends HttpServlet {
         //get single item
         Product product = products.stream().filter(p->p.getId() == id).findFirst().get();
 
-        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart_item");
         if(oldCartItems == null){
             oldCartItems = new HashMap<Long,Product>();
         }
         if(oldCartItems.containsKey(id)){
             oldCartItems.remove(id);
         }
-        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart-item");
+        oldCartItems = (HashMap<Long,Product>) req.getSession().getAttribute("cart_item");
         resp.getWriter().println(oldCartItems.size());
     }
 }

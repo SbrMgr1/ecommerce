@@ -1,6 +1,8 @@
 $(function(){
 
     var updateCart = function(key,qty){
+        $(`.item-container[data-key="${key}"]`).addClass('added');
+        $(`.item-container[data-key="${key}"] .check-icon`).addClass('fa fa-spinner fa-spin');
         $.ajax({
             url:"/add-to-cart",
             type:"post",
@@ -9,6 +11,8 @@ $(function(){
                 qty:qty
             }
         }).done(function (resp) {
+            $(`.item-container[data-key="${key}"]`).find('.add-to-cart-btn').find('.check-icon').removeClass('fa-spinner fa-spin');
+            $(`.item-container[data-key="${key}"]`).find('.add-to-cart-btn').find('.check-icon').addClass('fa-check');
             $('.item-count').text(resp)
         });
     }
