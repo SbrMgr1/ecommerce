@@ -7,7 +7,6 @@ $(function () {
             $(this).find("td:nth-child(1)").text(sn++);
         })
     }
-
     $("#my-form").submit(function (e) {
         e.preventDefault();
 
@@ -28,6 +27,7 @@ $(function () {
     function addUser(data) {
         // let last_index = $('tbody tr').last().children().first().text();
         // var td0=$('<td>').text(parseInt(last_index)+1);
+        
         if(!$('#my-form').find('[name="id"]').val()){
             var td0=$('<td>')
             var td1 = $('<td>').text(data.name);
@@ -70,5 +70,4 @@ $(function () {
             manageIndex();
         });
     })
-
 });
