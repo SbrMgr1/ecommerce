@@ -14,10 +14,10 @@
     <div class="container content p-15">
       <div class="mt-100 mb-100 row">
         <form class="col-md-offset-4 col-md-4" action="<c:url value="/signup"/>" method="post">
-          <p>Registration.</p>
+          <h3>Registration form</h3>
           <div class="form-group">
             <label for="email">Name</label>
-            <input type="text" class="form-control" id="name" name="email" value="">
+            <input type="text" class="form-control" id="name" name="name" value="">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
