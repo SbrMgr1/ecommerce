@@ -14,10 +14,10 @@
     <div class="container content p-15">
       <div class="mt-100 mb-100 row">
         <form class="col-md-offset-4 col-md-4" action="<c:url value="/login"/>" method="post">
-          <h3>Login with your email and password.</h3>
-          <c:if test="${success_msg != null}">
+          <h3>Login form</h3>
+          <c:if test="${param.success_msg != null}">
             <div class="alert alert-success">
-                ${success_msg}
+                ${param.success_msg}
             </div>
           </c:if>
           <div class="form-group">
