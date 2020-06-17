@@ -39,9 +39,9 @@ $(function()
         }
         else
         {
-            $(`tr[id="${data.id}"]`).find("td:nth-child(1)").text(data.title);
-            $(`tr[id="${data.id}"]`).find("td:nth-child(2)").text(data.slug);
-            $(`tr[id="${data.id}"]`).find("td:nth-child(3)").text(data.description);
+            $(`tr[id="${data.id}"]`).find("td:nth-child(2)").text(data.title);
+            $(`tr[id="${data.id}"]`).find("td:nth-child(3)").text(data.slug);
+            $(`tr[id="${data.id}"]`).find("td:nth-child(4)").text(data.description);
             manageSerialNumber();
             var val=null;
             $('#c_id').val(val)

@@ -29,9 +29,7 @@ public class ContentManage extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
         String cmsString=req.getParameter("cms");
-        System.out.println(cmsString);
         CMS cms=mapper.fromJson(cmsString, CMS.class);
-
         cmsDao.addCMS(cms);
         PrintWriter out = resp.getWriter();
         out.print(mapper.toJson(cms));
