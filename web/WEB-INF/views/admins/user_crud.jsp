@@ -22,13 +22,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="username">Name</label>
                                     <input type="text" class="form-control" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="userEmail">Email address</label>
+                                    <label for="userEmail">Email Address</label>
                                     <input type="email" class="form-control" id="userEmail" placeholder="Email">
                                 </div>
                             </div>
@@ -47,9 +47,9 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>User Id</th>
-                        <th>Username</th>
-                        <th>Email</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email Address</th>
                         <th>Action</th>
                     </tr>
                     </thead>

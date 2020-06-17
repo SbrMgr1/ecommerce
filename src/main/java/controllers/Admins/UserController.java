@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 public class UserController extends HttpServlet {
 
     Gson mapper = new Gson();
+    int flag = 0;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,28 +43,38 @@ public class UserController extends HttpServlet {
         HashMap<String, User> usermap = (HashMap<String, User>) this.getServletContext().getAttribute("users");
         List<User> userList = usermap.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
 
-        Long clientUserId = user.getId();
+        long clientUserId = user.getId();
         String clientUserEmail = user.getEmail();
 
-        Optional utmp = userList.stream().filter(u->u.getId() == clientUserId).findFirst();
+        System.out.println(clientUserId);
 
-        int flag;
+        int count = (int) userList.stream().filter(u -> u.getId() == clientUserId).count();
+        Optional utmp = userList.stream()
+                .filter(u->{
+                    if(u.getId() == clientUserId)
+                        return true;
+                    else
+                        return false;
+                }).findFirst();
+
+        List<User> list2 = userList.stream()
+                            .filter(u -> u.getEmail().equals(clientUserEmail)).collect(Collectors.toList());
+
         if(utmp.isPresent()){
-            flag = (int) userList.stream()
-                    .filter(u -> u.getEmail().equals(clientUserEmail))
-                    .filter(u -> u.getId() != user.getId())
+            flag = (int) list2.stream().filter(u -> !u.getId().equals(user.getId()))
                     .count();
         }else{
-            flag = (int) userList.stream()
-                    .filter(u -> u.getEmail().equals(clientUserEmail))
-                    .count();
+            flag = (int) list2.stream().count();
         }
 
         if(flag == 0) {
+            if(utmp.isPresent()) {
+                usermap.remove(((User) utmp.get()).getEmail());
+            }
 
             usermap.put(user.getEmail(), user);
             response.setStatus(true);
-            response.setMessage("User Saved Successfully!!");
+            response.setMessage("User saved successfully!!");
             response.setData(user);
 
         } else {
@@ -73,6 +84,7 @@ public class UserController extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.print(mapper.toJson(response));
 
+        System.out.println(mapper.toJson(user));
         System.out.println(mapper.toJson(response));
     }
 }
