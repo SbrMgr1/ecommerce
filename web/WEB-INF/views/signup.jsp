@@ -16,8 +16,12 @@
         <form class="col-md-offset-4 col-md-4" action="<c:url value="/signup"/>" method="post">
           <p>Registration.</p>
           <div class="form-group">
+            <label for="email">Name</label>
+            <input type="text" class="form-control" id="name" name="email" value="">
+          </div>
+          <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email" value="${cookie.name.value}">
+            <input type="text" class="form-control" id="email" name="email" value="">
           </div>
           <div class="form-group">
             <label for="password">Password</label>

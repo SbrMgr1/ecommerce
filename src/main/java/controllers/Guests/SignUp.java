@@ -26,6 +26,7 @@ public class SignUp extends HttpServlet {
         if(user == null){
             User user1 = new User();
             user1.setRole(UserRoles.USER);
+            user1.setEmail(req.getParameter("name"));
             user1.setEmail(req.getParameter("email"));
             user1.setPassword(req.getParameter("password"));
             userlist.put(user1.getEmail(),user1);
