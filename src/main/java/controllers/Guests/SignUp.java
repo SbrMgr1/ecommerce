@@ -24,12 +24,34 @@ public class SignUp extends HttpServlet {
         HashMap<String, User> userlist = (HashMap<String, models.User>) this.getServletContext().getAttribute("users");
         User user = userlist.get(req.getParameter("email"));
         if(user == null){
+            String errors = "";
             User user1 = new User();
             user1.setRole(UserRoles.USER);
-            user1.setEmail(req.getParameter("email"));
-            user1.setPassword(req.getParameter("password"));
-            userlist.put(user1.getEmail(),user1);
-            resp.sendRedirect("/login?msg=Your account has been registered successfully.");
+            if(req.getParameter("name").isEmpty()){
+                errors += "Name field is required.<br>";
+            }else{
+                user1.setName(req.getParameter("name"));
+            }
+            if (req.getParameter("email").isEmpty()){
+
+                errors += "Email field is required.<br>";
+            }else{
+                user1.setEmail(req.getParameter("email"));
+            }
+            if (req.getParameter("password").isEmpty()){
+
+                errors += "Password field is required.<br>";
+            }else{
+                user1.setPassword(req.getParameter("password"));
+            }
+            if(errors.isEmpty()){
+                userlist.put(user1.getEmail(),user1);
+                resp.sendRedirect("/login?success_msg=Your account has been registered successfully.");
+            }else{
+                req.setAttribute("errors",errors);
+                req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req,resp);
+            }
+
         }else{
             req.setAttribute("errors","This email has been already taken. Please try with another email address.");
             req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req,resp);
