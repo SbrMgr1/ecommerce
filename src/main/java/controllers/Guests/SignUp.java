@@ -28,16 +28,21 @@ public class SignUp extends HttpServlet {
             User user1 = new User();
             user1.setRole(UserRoles.USER);
             if(req.getParameter("name").isEmpty()){
-                user1.setName(req.getParameter("name"));
                 errors += "Name field is required.<br>";
+            }else{
+                user1.setName(req.getParameter("name"));
             }
             if (req.getParameter("email").isEmpty()){
-                user1.setEmail(req.getParameter("email"));
+
                 errors += "Email field is required.<br>";
+            }else{
+                user1.setEmail(req.getParameter("email"));
             }
             if (req.getParameter("password").isEmpty()){
-                user1.setPassword(req.getParameter("password"));
+
                 errors += "Password field is required.<br>";
+            }else{
+                user1.setPassword(req.getParameter("password"));
             }
             if(errors.isEmpty()){
                 userlist.put(user1.getEmail(),user1);
