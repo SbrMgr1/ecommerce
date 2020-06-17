@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="id" value="">
-                        <button type="submit" style="margin-bottom: 15px" class="btn btn-default">Submit</button>
+                        <button type="submit" style="margin-bottom: 15px" class="btn btn-primary">Save</button>
                     </form>
                 </div>
                 <c:set var="count" value="0" scope="page" />
