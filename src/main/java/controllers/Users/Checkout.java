@@ -24,11 +24,16 @@ public class Checkout extends HttpServlet {
         }
         List<Product> products = oldProduct.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
 
-        req.setAttribute("rand_total",products.stream().mapToDouble((pro)->pro.getQty()*pro.getUnitPrice()).sum());
-        req.setAttribute("products",products);
+        if(products.size()<=0){
+            resp.sendRedirect("/cart-details");
+        }else{
+            req.setAttribute("rand_total",products.stream().mapToDouble((pro)->pro.getQty()*pro.getUnitPrice()).sum());
+            req.setAttribute("products",products);
 
-        req.getSession().setAttribute("cart-item",null);
-        //payment gateaway process is remaining
-        req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req,resp);
+            req.getSession().setAttribute("cart-item",null);
+            //payment gateaway process is remaining
+            req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req,resp);
+        }
+
     }
 }

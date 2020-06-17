@@ -23,6 +23,9 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Dashboard</h1>
             </div>
+            <div class="col-lg-12 mt-100">
+                <h1 class="text-center">Welcome to Admin Panel</h1>
+            </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->

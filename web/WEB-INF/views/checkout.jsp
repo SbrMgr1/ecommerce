@@ -37,7 +37,7 @@
                     USD ${product.unitPrice}
                 </td>
                 <td>
-                    <input class="form-control qty-input" type="number" min="1" value="${product.qty}">
+                        ${product.qty}
                 </td>
                 <td class="total-price">
                     USD ${product.qty*product.unitPrice}
