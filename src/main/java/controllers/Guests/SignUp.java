@@ -19,7 +19,6 @@ public class SignUp extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<String, User> userlist = (HashMap<String, models.User>) this.getServletContext().getAttribute("users");
@@ -29,9 +28,11 @@ public class SignUp extends HttpServlet {
             user1.setRole(UserRoles.USER);
             user1.setEmail(req.getParameter("email"));
             user1.setPassword(req.getParameter("password"));
-            userlist.put(user1.getId(),user1);
+            userlist.put(user1.getEmail(),user1);
+            resp.sendRedirect("/login?msg=Your account has been registered successfully.");
         }else{
-            req.getRequestDispatcher("/WEB-INF/views/signup.jsp?msg=This email has been already taken").forward(req,resp);
+            req.setAttribute("errors","This email has been already taken. Please try with another email address.");
+            req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req,resp);
         }
     }
 }
