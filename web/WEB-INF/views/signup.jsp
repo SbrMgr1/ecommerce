@@ -17,16 +17,17 @@
           <h3>Registration form</h3>
           <div class="form-group">
             <label for="email">Name</label>
-            <input type="text" class="form-control" id="name" name="name" value="">
+            <input type="text" class="form-control" id="name" name="name" value="${param.name}">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email" value="">
+            <input type="text" class="form-control" id="email" name="email" value="${param.email}">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password" value="${param.password}">
           </div>
+
           <c:if test="${errors != null}"><div class="form-group text-danger">${errors}</div></c:if>
           <div class="form-group">
             <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-log-in"></span> Signin</button>

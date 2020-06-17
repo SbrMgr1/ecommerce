@@ -69,6 +69,9 @@
               </div>
             </div>
             <input type="hidden" name="id">
+            <div class="row">
+            <div class="text-danger error-container col-sm-6"></div>
+            </div>
             <button type="submit" style="margin-bottom: 15px" class="btn btn-success">Submit</button>
           </form>
         </div>

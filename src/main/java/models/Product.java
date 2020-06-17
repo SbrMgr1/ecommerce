@@ -8,14 +8,14 @@ import java.util.List;
 public class Product {
 
     private long id;
-    private String name;
-    private long catId;
+    private String name = "";
+    private long catId = 0;
 
-    private String producImg;
-    private Double unitPrice;
+    private String producImg = "";
+    private double unitPrice;
     private float tax;
-    private Integer qty;
-    private String desc;
+    private int qty;
+    private String desc ="";
 
     private List<Order> orders = new ArrayList<Order>();
 
@@ -23,7 +23,7 @@ public class Product {
         this.id = MyHelper.getRandomInt();
     }
 
-    public Product(String name, Double unitPrice,String img,float tax,long catId,String desc) {
+    public Product(String name, double unitPrice,String img,float tax,long catId,String desc) {
         this.id = MyHelper.getRandomInt();
         this.name = name;
         this.unitPrice = unitPrice;
@@ -69,7 +69,7 @@ public class Product {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -81,11 +81,11 @@ public class Product {
         this.tax = tax;
     }
 
-    public Integer getQty() {
+    public int getQty() {
         return qty;
     }
 
-    public void setQty(Integer qty) {
+    public void setQty(int qty) {
         this.qty = qty;
     }
 

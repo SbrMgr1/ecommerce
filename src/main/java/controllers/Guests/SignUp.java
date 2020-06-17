@@ -36,10 +36,13 @@ public class SignUp extends HttpServlet {
 
                 errors += "Email field is required.<br>";
             }else{
-                user1.setEmail(req.getParameter("email"));
+                if(req.getParameter("email").matches("^([a-zA-Z_0-9]{1,})@([a-zA-Z]{1,}).([a-zA-Z]{1,})$")){
+                    user1.setEmail(req.getParameter("email"));
+                }else{
+                    errors += "Invalid email found.<br>";
+                }
             }
             if (req.getParameter("password").isEmpty()){
-
                 errors += "Password field is required.<br>";
             }else{
                 user1.setPassword(req.getParameter("password"));

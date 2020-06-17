@@ -30,6 +30,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet("/administration/product")
 public class ProductController extends HttpServlet {
     Gson mapper = new Gson();
+    String[] inputfieldCollection = new String[2];
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
@@ -44,24 +45,53 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        List<String> errors = new ArrayList<String>();
         String text_field = "";
         String file_name = "";
         tmp = new Product();
         GlobalResp globalResp = new GlobalResp();
-        String[] results = getInputs(req,text_field,file_name);
-        if(!results[0].isEmpty()){
-            tmp = mapper.fromJson(results[0],Product.class);
-            if(!results[1].isEmpty()){
-                tmp.setProducImg(results[1]);
+        inputfieldCollection = getInputs(req,text_field,file_name);
+
+        if(!inputfieldCollection[0].isEmpty()){
+
+            tmp = mapper.fromJson(inputfieldCollection[0],Product.class);
+            if(!inputfieldCollection[1].isEmpty()){
+                tmp.setProducImg(inputfieldCollection[1]);
             }
             ProductDao productDao = (ProductDao) this.getServletContext().getAttribute("productDao");
-            Product pd = productDao.saveProduct(tmp);
-            if(pd != null){
-                globalResp.setData(pd);
-                globalResp.setStatus(true);
-                globalResp.setMessage("Saved Succssfully.");
+            if(tmp.getName() == null){
+                errors.add("Product Name field can not be empty.");
+            }else if(tmp.getName().isEmpty()){
+                errors.add("Product Name field can not be empty.");
             }
-
+            if(tmp.getCatId() <= 0){
+                errors.add("Product Category field can not be empty.");
+            }
+            if(tmp.getUnitPrice() <= 0){
+                errors.add("Unit price field can not be empty.");
+            }
+            if(productDao.findProductById(tmp.getId()) == null){
+                if (tmp.getProducImg() == null){
+                    errors.add("Product Image is required.");
+                }else if(tmp.getProducImg().isEmpty()){
+                    errors.add("Product Image is required.");
+                }
+            }
+            if(errors.size()==0){
+                Product pd = productDao.saveProduct(tmp);
+                if(pd != null){
+                    globalResp.setData(pd);
+                    globalResp.setStatus(true);
+                    globalResp.setMessage("Saved Successfully.");
+                }else{
+                    globalResp.setMessage("Product has not been saved successfully.");
+                }
+            }else{
+                globalResp.setMessage(String.join("<br>", errors));
+            }
+        }else{
+            globalResp.setMessage("Product has not been saved successfully.");
         }
         resp.getWriter().print(mapper.toJson(globalResp));
 
