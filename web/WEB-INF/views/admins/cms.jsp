@@ -16,21 +16,21 @@
             <div class="col-lg-12">
                 <h1 class="page-header">CMS Page</h1>
 
-                <button class="btn btn-success" href="#demo" data-toggle="collapse">ADD Content</button>
+                <button class="btn btn-success add-edit-btn" href="#demo" data-toggle="collapse">ADD/Edit Content</button>
                 <div id="demo" class="collapse">
-                   <div class="form-group" id="cms-form">
+                   <form class="form-group" id="cms-form">
                        <input type="hidden" name="id" id="c_id">
                        <label>Title</label><input type="text" name="title" id="title" class="form-control">
                        <label>Slug</label><input type="text"  name="title" id="slug" class="form-control">
                        <label>Description</label><textarea name="description" id="description" class="form-control" placeholder="Your Description here"></textarea>
 
                        <input type="submit" name="submit" value="submit" class="btn btn-success" id="cmsSubmit">
-                   </div>
+                   </form>
                 </div>
                 <table class="table table-hover" id="cms-table">
                     <thead>
                     <tr>
-<%--                        <th>#</th>--%>
+                        <th>#</th>
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Description</th>
@@ -41,7 +41,7 @@
                     <c:forEach items="${cms}" var="cm">
                         <c:set var="count" value="${count + 1}" scope="page"/>
                         <tr id="<c:out value="${cm.id}" />">
-<%--                            <td><c:out value="${count}"/></td>--%>
+                            <td><c:out value="${count}"/></td>
                             <td><c:out value="${cm.title}" /></td>
                             <td><c:out value="${cm.slug}" /></td>
                             <td><c:out value="${cm.description}" /></td>
