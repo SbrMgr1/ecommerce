@@ -16,9 +16,10 @@ public class Page extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURI();
         String[] segments = uri.split("/page/");
-        
+        System.out.println(segments);
         CMSDao cmsDao = (CMSDao)this.getServletContext().getAttribute("cmsDao");
         CMS cms = cmsDao.findBySlug(segments[1]);
+        System.out.println(cms);
         req.setAttribute("cms",cms);
         req.getRequestDispatcher("/WEB-INF/views/page.jsp").forward(req,resp);
     }

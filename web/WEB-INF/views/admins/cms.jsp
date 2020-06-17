@@ -21,7 +21,7 @@
                    <form class="form-group" id="cms-form">
                        <input type="hidden" name="id" id="c_id">
                        <label>Title</label><input type="text" name="title" id="title" class="form-control">
-                       <label>Slug</label><input type="text"  name="title" id="slug" class="form-control">
+                       <label>Slug</label><input type="text"  name="slug" id="slug" class="form-control">
                        <label>Description</label><textarea name="description" id="description" class="form-control" placeholder="Your Description here"></textarea>
 
                        <input type="submit" name="submit" value="submit" class="btn btn-success" id="cmsSubmit">
